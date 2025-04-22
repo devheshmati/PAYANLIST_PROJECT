@@ -432,11 +432,11 @@
                 </div>
                 <div class="grid grid-cols-12 gap-6">
                     <div
-                        class="flex gap-4 mt-6 rounded-lg col-span-6 bg-gradient-to-b from-slate-800 to-slate-950 gap-2 p-4 shadow-[-1px_-1px_5px_0px] shadow-slate-400 justify-center items-center">
+                        class="flex flex-col gap-4 mt-6 rounded-lg col-span-6 bg-gradient-to-b from-slate-800 to-slate-950 gap-2 p-4 shadow-[-1px_-1px_5px_0px] shadow-slate-400">
+                        <h4 class="text-xl">Overview Dashboard</h4>
                         <div
-                            class="flex p-4 bg-gradient-to-tr from-slate-950 to-slate-800 shadow-[-1px_1px_3px_0px] shadow-slate-400 rounded-lg">
+                            class="flex p-4 bg-gradient-to-tr from-slate-950 to-slate-800 shadow-[-1px_1px_3px_0px] shadow-slate-400 rounded-lg items-center justify-between">
                             <div class="flex flex-col gap-2">
-                                <h4 class="text-xl">Overview Dashboard</h4>
                                 <div>
                                     <p class="text-sm">Total Tasks Complete</p>
                                     <p class="text-xs opacity-60">Jan 1, 2024-Jun 30, 2024</p>
@@ -459,12 +459,38 @@
                                 <canvas class="w-[250px]" id="chart-01"></canvas>
                             </div>
                         </div>
+                        <div>
+                            <h4 class="text-md">Task Breakdown</h4>
+                            <div class="text-xs opacity-60">
+                                <span>14.5%</span>
+                                <span>Vs</span>
+                                <span>2</span>
+                                <span>Month</span>
+                                <span>Before</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-12">
+                            <div class='col-span-6 relative pt-[4rem]'>
+                                <div class="absolute top-[5%] left-[5%] w-fit h-fit index-10">
+                                    <p class="text-xs opacity-60">In Process</p>
+                                    <p class="text-xl">900</p>
+                                </div>
+                                <canvas class="w-full" id="chart-02"></canvas>
+                            </div>
+                            <div class='col-span-6 relative pt-[4rem]'>
+                                <div class="absolute top-[5%] left-[5%] w-fit h-fit index-10">
+                                    <p class="text-xs opacity-60">Pending Approval</p>
+                                    <p class="text-xl">350</p>
+                                </div>
+                                <canvas class="w-full" id="chart-03"></canvas>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <script type='module' src="/js/chart-01.js" defer></script>
+        <script type='module' src="/js/charts.js" defer></script>
     </x-main>
     <x-footer />
 </x-layout>

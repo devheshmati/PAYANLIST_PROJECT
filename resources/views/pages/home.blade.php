@@ -430,9 +430,9 @@
                         Productivity Sed et risus</h3>
 
                 </div>
-                <div class="grid grid-cols-12 gap-6">
+                <div class="grid grid-cols-12 gap-6 mt-7">
                     <div
-                        class="flex flex-col gap-4 mt-6 rounded-lg col-span-6 bg-gradient-to-b from-slate-800 to-slate-950 gap-2 p-4 shadow-[-1px_-1px_5px_0px] shadow-slate-400">
+                        class="flex flex-col gap-4 rounded-lg col-span-6 bg-gradient-to-b from-slate-800 to-slate-950 gap-2 p-4 shadow-[-1px_-1px_5px_0px] shadow-slate-400">
                         <h4 class="text-xl">Overview Dashboard</h4>
                         <div
                             class="flex p-4 bg-gradient-to-tr from-slate-950 to-slate-800 shadow-[-1px_1px_3px_0px] shadow-slate-400 rounded-lg items-center justify-between">
@@ -483,6 +483,57 @@
                                     <p class="text-xl">350</p>
                                 </div>
                                 <canvas class="w-full" id="chart-03"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-6 flex flex-col justify-between">
+                        <div class="flex gap-4">
+                            <div
+                                class="p-4 h-[50px] w-[50px] shadow-[-1px_-1px_5px_0px] shadow-slate-400 rounded-lg flex justify-center items-center">
+                                <i class="fa-solid fa-gauge-simple-high text-xl"></i>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <h4 class="text-2xl">Peak Efficiency at Its Finest</h4>
+                                <p class="font-normal text-sm opacity-60">Etiam ante mi, fermentum sed metus
+                                    vulputate,
+                                    placerat
+                                    maximus nunc.
+                                    In id elit et
+                                    neque efficitur fringilla. Nam maximus tristique eleifend. Morbi elementum malesuada
+                                    ipsum sit amet tempor. Duis a nisl luctus, pellentesque quam in, pulvinar neque.
+                                    Proin tristique sapien non purus tincidunt</p>
+                            </div>
+                        </div>
+                        <div class="border-b-1 border-slate-400 w-[80%] mx-auto opacity-60 my-4"></div>
+                        <div class="flex gap-4">
+                            <div
+                                class="p-4 h-[50px] w-[50px] shadow-[-1px_-1px_5px_0px] shadow-slate-400 rounded-lg flex justify-center items-center">
+                                <i class="fa-solid fa-lightbulb text-xl"></i>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <h4 class="text-2xl">Peak Efficiency at Its Finest</h4>
+                                <p class="text-sm opacity-60">Etiam ante mi, fermentum sed metus vulputate, placerat
+                                    maximus nunc.
+                                    In id elit et
+                                    neque efficitur fringilla. Nam maximus tristique eleifend. Morbi elementum malesuada
+                                    ipsum sit amet tempor. Duis a nisl luctus, pellentesque quam in, pulvinar neque.
+                                    Proin tristique sapien non purus tincidunt</p>
+                            </div>
+                        </div>
+                        <div class="border-b-1 border-slate-400 w-[80%] mx-auto opacity-60 my-4"></div>
+                        <div class="flex gap-4">
+                            <div
+                                class="p-4 h-[50px] w-[50px] shadow-[-1px_-1px_5px_0px] shadow-slate-400 rounded-lg flex justify-center items-center">
+                                <i class="fa-solid fa-chart-line text-xl"></i>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <h4 class="text-2xl">Peak Efficiency at Its Finest</h4>
+                                <p class="text-sm opacity-60">Etiam ante mi, fermentum sed metus vulputate, placerat
+                                    maximus nunc.
+                                    In id elit et
+                                    neque efficitur fringilla. Nam maximus tristique eleifend. Morbi elementum malesuada
+                                    ipsum sit amet tempor. Duis a nisl luctus, pellentesque quam in, pulvinar neque.
+                                    Proin tristique sapien non purus tincidunt</p>
                             </div>
                         </div>
                     </div>

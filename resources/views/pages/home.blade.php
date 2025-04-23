@@ -541,6 +541,108 @@
             </div>
         </section>
 
+        {{-- Section 09 --}}
+        <section class="bg-slate-950 text-white py-10">
+            <div class="flex flex-col gap-2 justify-center items-center">
+                <p class="flex gap-1 items-center opacity-80 font-[Oswald] tracking-widest text-md"><span><i
+                            class="fa-solid fa-money-bill-1"></i></span>Pricing
+                </p>
+                <h3 class="text-4xl font-regular">The Ideal Solution for Your Requirements</h3>
+                <ul class="flex justify-center items-between w-full gap-6 mt-6">
+                    <li
+                        class="bg-gradient-to-tr from-slate-800 hover:from-purple-800 to-slate-950 hover:to-purple-950 p-4 flex flex-col justify-between gap-3 rounded-lg shadow-[-1px_-1px_5px_0px] shadow-slate-400 max-w-[300px]">
+                        <p class="px-2 py-1 rounded-lg bg-[rgba(49,65,88,0.6)] text-xs w-fit">BASIC</p>
+                        <p class="text-4xl">Free</p>
+                        <div>
+                            <p class="tracking-wide text-md">BENEFITS</p>
+                        </div>
+                        <ul class="flex flex-col gap-2">
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-green-400 text-xs"></i>
+                                <p class="text-sm opacity-60">Access to basic Task management features</p>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-green-400 text-xs"></i>
+                                <p class="text-sm opacity-60">AI-powered task prioritization</p>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-green-400 text-xs"></i>
+                                <p class="text-sm opacity-60">Simple workflow automation</p>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-green-400 text-xs"></i>
+                                <p class="text-sm opacity-60">Real-time progress tracking</p>
+                            </li>
+                        </ul>
+                        <a href="#"
+                            class="flex bg-slate-700 hover:bg-purple-600 justify-center items-center py-2 rounded-full">Get
+                            Started</a>
+                    </li>
+                    <li
+                        class="bg-gradient-to-tr from-slate-800 hover:from-purple-800 to-slate-950 hover:to-purple-950 p-4 flex flex-col justify-between gap-3 rounded-lg shadow-[-1px_-1px_5px_0px] shadow-slate-400 max-w-[300px]">
+                        <p class="px-2 py-1 rounded-lg bg-[rgba(49,65,88,0.6)] text-xs w-fit">BUSINESS</p>
+                        <p class="text-4xl">$20 /mo</p>
+                        <div>
+                            <p class="tracking-wide text-md">BENEFITS</p>
+                            <p class="text-xs opacity-60">Everything in Basic plan plus...</p>
+                        </div>
+                        <ul class="flex flex-col gap-2">
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-green-400 text-xs"></i>
+                                <p class="text-sm opacity-60">Advanded task managemnet and customization</p>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-green-400 text-xs"></i>
+                                <p class="text-sm opacity-60">Adaptive scheduling for dynamic project timelines</p>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-green-400 text-xs"></i>
+                                <p class="text-sm opacity-60">Enhanced reporting and analytics for better insights</p>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-green-400 text-xs"></i>
+                                <p class="text-sm opacity-60">Priority email support</p>
+                            </li>
+                        </ul>
+                        <a href="#"
+                            class="flex bg-slate-700 hover:bg-purple-600 justify-center items-center py-2 rounded-full">Get
+                            Started</a>
+                    </li>
+                    <li
+                        class="bg-gradient-to-tr from-slate-800 hover:from-purple-800 to-slate-950 hover:to-purple-950 p-4 flex flex-col justify-between gap-3 rounded-lg shadow-[-1px_-1px_5px_0px] shadow-slate-400 max-w-[300px]">
+                        <p class="px-2 py-1 rounded-lg bg-[rgba(49,65,88,0.6)] text-xs w-fit">ENTERPRICE</p>
+                        <p class="text-4xl">$40 /mo</p>
+                        <div>
+                            <p class="tracking-wide text-md">BENEFITS</p>
+                            <p class="text-xs opacity-60">Everything in Business plan plus...</p>
+                        </div>
+                        <ul class="flex flex-col gap-2">
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-green-400 text-xs"></i>
+                                <p class="text-sm opacity-60">Full AI-driven workflow automotion for complex tasks</p>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-green-400 text-xs"></i>
+                                <p class="text-sm opacity-60">In-depth performance analytics with AI insights</p>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-green-400 text-xs"></i>
+                                <p class="text-sm opacity-60">Customizable dashboards and reporting tools</p>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-green-400 text-xs"></i>
+                                <p class="text-sm opacity-60">Dedicated account manager for personalized support</p>
+                            </li>
+                        </ul>
+                        <a href="#"
+                            class="flex bg-slate-700 hover:bg-purple-600 justify-center items-center py-2 rounded-full">Get
+                            Started</a>
+                    </li>
+                </ul>
+                </ul>
+            </div>
+        </section>
+
         <script type='module' src="/js/charts.js" defer></script>
     </x-main>
     <x-footer />

@@ -1,4 +1,5 @@
 @php
+    // data for making question FAQS part in the section 010
     $accList = [
         [
             'title' => 'What is the AI Task Management Tool?',
@@ -36,6 +37,7 @@
 <x-layout>
     <x-header />
     <x-main>
+
         {{-- Section 01 --}}
         <section>
             <div

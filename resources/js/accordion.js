@@ -9,9 +9,7 @@ accordion_items.forEach(item => {
         if (accordion_active_item && accordion_active_item !== item) {
             accordion_active_item.classList.remove('active');
             const previouslyActiveIcon = accordion_active_item.querySelector('.accordion-icon');
-            if (previouslyActiveIcon) {
-                previouslyActiveIcon.textContent = '+'; // Reset icon of previously active item
-            }
+            previouslyActiveIcon.textContent = '+'; // Reset icon of previously active item
         }
 
         item.classList.toggle('active');

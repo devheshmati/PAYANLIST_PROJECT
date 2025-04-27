@@ -1,3 +1,38 @@
+@php
+    $accList = [
+        [
+            'title' => 'What is the AI Task Management Tool?',
+            'content' =>
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dictum porttitor nibh, sit amet venenatis ex dapibus et. Vestibulum laoreet tellus quis velit condimentum congue. In hac habitasse platea dictumst. Nam ornare augue vel vestibulum semper',
+        ],
+        [
+            'title' => 'How will this tool improve my team`s productivity?',
+            'content' =>
+                'Proin mattis purus felis, a condimentum nunc mollis eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec varius purus eu ex malesuada hendrerit. Aenean tristique dignissim augue in tristique. Nulla maximus neque et congue gravida. Ut feugiat, libero id posuere luctus.',
+        ],
+        [
+            'title' => 'Do i need my technical experience to use this tool?',
+            'content' =>
+                'Nam lorem erat, accumsan sit amet feugiat a, faucibus vel lectus. Nunc cursus hendrerit lorem, et elementum sapien efficitur sed. Nullam metus est, tempor ut bibendum at, mollis sit amet turpis. Ut diam velit, ornare sed sem ut, ultricies tincidunt tortor.',
+        ],
+        [
+            'title' => 'Can i customize the tool to fit my team`s needs?',
+            'content' =>
+                'Nunc consectetur sagittis nisl, ac efficitur magna tempus vehicula. Fusce gravida, magna ut iaculis pulvinar, sem diam feugiat leo, in posuere orci sapien eu nibh. Aliquam nec felis vel ex dapibus finibus vel id dui. Aenean dictum auctor dui, euismod mollis neque vestibulum vel.',
+        ],
+        [
+            'title' => 'Is my data safe with your platform?',
+            'content' =>
+                'Sed in sapien massa. Suspendisse venenatis, elit non gravida cursus, lorem purus fermentum eros, at laoreet dui erat sit amet elit. Suspendisse rutrum rutrum diam, eu porta ante interdum in. Nullam feugiat magna nec semper hendrerit. Aliquam vitae arcu ut ex auctor aliquet.',
+        ],
+        [
+            'title' => 'How do i upgrade my plan?',
+            'content' =>
+                'Donec volutpat turpis et scelerisque tempor. Pellentesque at lacus nec felis mattis lacinia sed fringilla urna. Vestibulum porttitor velit ac molestie sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent aliquam porta odio, a luctus tortor rhoncus sed. Donec sollicitudin semper lectus. Donec nec suscipit dui.',
+        ],
+    ];
+@endphp
+
 <x-layout>
     <x-header />
     <x-main>
@@ -493,7 +528,7 @@
                                 <i class="fa-solid fa-gauge-simple-high text-xl"></i>
                             </div>
                             <div class="flex flex-col gap-2">
-                                <h4 class="text-2xl">Peak Efficiency at Its Finest</h4>
+                                <h4 class="text-2xl font-[Oswald]">Peak Efficiency at Its Finest</h4>
                                 <p class="font-normal text-sm opacity-60">Etiam ante mi, fermentum sed metus
                                     vulputate,
                                     placerat
@@ -511,7 +546,7 @@
                                 <i class="fa-solid fa-lightbulb text-xl"></i>
                             </div>
                             <div class="flex flex-col gap-2">
-                                <h4 class="text-2xl">Peak Efficiency at Its Finest</h4>
+                                <h4 class="text-2xl font-[Oswald]">Customizable Solutions</h4>
                                 <p class="text-sm opacity-60">Etiam ante mi, fermentum sed metus vulputate, placerat
                                     maximus nunc.
                                     In id elit et
@@ -527,7 +562,7 @@
                                 <i class="fa-solid fa-chart-line text-xl"></i>
                             </div>
                             <div class="flex flex-col gap-2">
-                                <h4 class="text-2xl">Peak Efficiency at Its Finest</h4>
+                                <h4 class="text-2xl font-[Oswald]">Data Driven Decisions</h4>
                                 <p class="text-sm opacity-60">Etiam ante mi, fermentum sed metus vulputate, placerat
                                     maximus nunc.
                                     In id elit et
@@ -551,10 +586,12 @@
                 <ul class="flex justify-center items-between w-full gap-6 mt-6">
                     <li
                         class="bg-gradient-to-tr from-slate-800 hover:from-purple-800 to-slate-950 hover:to-purple-950 p-4 flex flex-col justify-between gap-3 rounded-lg shadow-[-1px_-1px_5px_0px] shadow-slate-400 max-w-[300px]">
-                        <p class="px-2 py-1 rounded-lg bg-[rgba(49,65,88,0.6)] text-xs w-fit">BASIC</p>
-                        <p class="text-4xl">Free</p>
-                        <div>
-                            <p class="tracking-wide text-md">BENEFITS</p>
+                        <div class="flex flex-col gap-4">
+                            <p class="px-2 py-1 rounded-lg bg-[rgba(49,65,88,0.6)] text-xs w-fit">BASIC</p>
+                            <p class="text-4xl">Free</p>
+                            <div>
+                                <p class="tracking-wide text-md">BENEFITS</p>
+                            </div>
                         </div>
                         <ul class="flex flex-col gap-2">
                             <li class="flex items-center gap-2">
@@ -580,11 +617,13 @@
                     </li>
                     <li
                         class="bg-gradient-to-tr from-slate-800 hover:from-purple-800 to-slate-950 hover:to-purple-950 p-4 flex flex-col justify-between gap-3 rounded-lg shadow-[-1px_-1px_5px_0px] shadow-slate-400 max-w-[300px]">
-                        <p class="px-2 py-1 rounded-lg bg-[rgba(49,65,88,0.6)] text-xs w-fit">BUSINESS</p>
-                        <p class="text-4xl">$20 /mo</p>
-                        <div>
-                            <p class="tracking-wide text-md">BENEFITS</p>
-                            <p class="text-xs opacity-60">Everything in Basic plan plus...</p>
+                        <div class="flex flex-col gap-4">
+                            <p class="px-2 py-1 rounded-lg bg-[rgba(49,65,88,0.6)] text-xs w-fit">BUSINESS</p>
+                            <p class="text-4xl">$20 /mo</p>
+                            <div>
+                                <p class="tracking-wide text-md">BENEFITS</p>
+                                <p class="text-xs opacity-60">Everything in Basic plan plus...</p>
+                            </div>
                         </div>
                         <ul class="flex flex-col gap-2">
                             <li class="flex items-center gap-2">
@@ -610,11 +649,13 @@
                     </li>
                     <li
                         class="bg-gradient-to-tr from-slate-800 hover:from-purple-800 to-slate-950 hover:to-purple-950 p-4 flex flex-col justify-between gap-3 rounded-lg shadow-[-1px_-1px_5px_0px] shadow-slate-400 max-w-[300px]">
-                        <p class="px-2 py-1 rounded-lg bg-[rgba(49,65,88,0.6)] text-xs w-fit">ENTERPRICE</p>
-                        <p class="text-4xl">$40 /mo</p>
-                        <div>
-                            <p class="tracking-wide text-md">BENEFITS</p>
-                            <p class="text-xs opacity-60">Everything in Business plan plus...</p>
+                        <div class="flex flex-col gap-4">
+                            <p class="px-2 py-1 rounded-lg bg-[rgba(49,65,88,0.6)] text-xs w-fit">ENTERPRICE</p>
+                            <p class="text-4xl">$40 /mo</p>
+                            <div>
+                                <p class="tracking-wide text-md">BENEFITS</p>
+                                <p class="text-xs opacity-60">Everything in Business plan plus...</p>
+                            </div>
                         </div>
                         <ul class="flex flex-col gap-2">
                             <li class="flex items-center gap-2">
@@ -640,6 +681,17 @@
                     </li>
                 </ul>
                 </ul>
+            </div>
+        </section>
+
+        {{-- Section 010 --}}
+        <section class="bg-slate-950 text-white font-[Roboto] pt-[4rem] pb-[8rem]">
+            <div class="w-[80%] mx-auto flex flex-col gap-2 justify-center items-center">
+                <p class="flex gap-1 items-center opacity-80 font-[Oswald] tracking-widest text-md"><span><i
+                            class="fa-solid fa-money-bill-1"></i></span>FAQS
+                </p>
+                <h3 class="text-4xl">Freqeuntly Asked questions</h3>
+                <x-accordion message='hello' :accList="$accList" />
             </div>
         </section>
 

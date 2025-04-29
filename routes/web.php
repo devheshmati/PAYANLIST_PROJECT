@@ -33,6 +33,14 @@ Route::middleware(['auth'])->prefix('user')->group(function () {
     Route::get('dashboard', function () {
         return view('user.dashboard');
     });
+
+    Route::get('profile', function () {
+        return view('user.profile');
+    })->name('profile');
+
+    Route::get('settings', function () {
+        return view('settings');
+    })->name('settings');
 });
 
 // pages

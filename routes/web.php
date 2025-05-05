@@ -29,18 +29,19 @@ Route::prefix('/auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
+// user panel
 Route::middleware(['auth'])->prefix('user')->group(function () {
     Route::get('dashboard', function () {
         return view('user.dashboard');
-    });
+    })->name('user.dashboard');
 
     Route::get('profile', function () {
         return view('user.profile');
-    })->name('profile');
+    })->name('user.profile');
 
     Route::get('settings', function () {
-        return view('settings');
-    })->name('settings');
+        return view('user.settings');
+    })->name('user.settings');
 });
 
 // pages

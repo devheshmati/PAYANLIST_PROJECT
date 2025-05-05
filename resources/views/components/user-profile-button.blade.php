@@ -8,10 +8,10 @@
         {{-- list of drop down should be include profile, settings, logout, subscribtion, user status --}}
         <ul class="bg-slate-950 text-slate-400 text-left w-[200px] text-lg rounded-lg">
             <li class="px-4 py-3 hover:bg-slate-900 hover:text-white">
-                <a href="{{ route('profile') }}">Profile</a>
+                <a href="{{ route('user.profile') }}">Profile</a>
             </li>
             <li class="px-4 py-3 hover:bg-slate-900 hover:text-white">
-                <a href="{{ route('settings') }}">Settings</a>
+                <a href="{{ route('user.settings') }}">Settings</a>
             </li>
             <li class="px-4 py-3 hover:bg-slate-900 hover:text-white">
                 <form method="POST" action="{{ route('logout') }}">

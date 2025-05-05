@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserWorkflowsController;
 use App\Http\Controllers\StorageController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,11 +43,19 @@ Route::middleware(['auth'])->prefix('user')->group(function () {
     Route::get('settings', function () {
         return view('user.settings');
     })->name('user.settings');
+
+    Route::get('reports', function () {
+        return view('user.reports');
+    })->name('user.reports');
+
+    // workflows
+    Route::resource('workflows', UserWorkflowsController::class);
 });
 
-// pages
+// general pages
 Route::get("/documents", function () {
     return view('pages.documents');
 })->name('documents');
 
+// storage route
 Route::get('/public/storage', [StorageController::class, 'test']);

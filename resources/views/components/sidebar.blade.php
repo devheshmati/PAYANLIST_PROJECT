@@ -13,28 +13,37 @@
         </button>
         <ul class="sidebar-list flex flex-col justify-center items-center transition-all overflow-x-hidden pt-20">
             <li class="sidebar-item">
-                <a href="#" class="flex gap-1 p-4 hover:bg-purple-800 hover:text-white">
+                <a href="{{ route('user.dashboard') }}" class="flex gap-1 p-4 hover:bg-purple-800 hover:text-white">
+                    <i class="fa-solid fa-gauge"></i>
+                    <h3 class="transition-all hidden whitespace-nowrap">Dashboard</h3>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="{{ route('user.profile') }}" class="flex gap-1 p-4 hover:bg-purple-800 hover:text-white">
                     <i class="fa-solid fa-user"></i>
                     <h3 class="transition-all hidden whitespace-nowrap">Profile</h3>
                 </a>
             </li>
             <li class="sidebar-item">
-                <a href="#" class="flex gap-1 p-4 hover:bg-purple-800 hover:text-white">
+                <a href="{{ route('user.reports') }}" class="flex gap-1 p-4 hover:bg-purple-800 hover:text-white">
                     <i class="fa-solid fa-newspaper"></i>
                     <h3 class="transition-all hidden whitespace-nowrap">Reports</h3>
                 </a>
             </li>
             <li class="sidebar-item">
-                <a href="#" class="flex gap-1 p-4 hover:bg-purple-800 hover:text-white">
+                <a href="{{ route('user.settings') }}" class="flex gap-1 p-4 hover:bg-purple-800 hover:text-white">
                     <i class="fa-solid fa-screwdriver-wrench"></i>
                     <h3 class="transition-all hidden whitespace-nowrap">Settings</h3>
                 </a>
             </li>
             <li class="sidebar-item mt-10">
-                <a href="#" class="flex gap-1 p-4 hover:bg-purple-800 hover:text-white">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                    <h3 class="transition-all hidden whitespace-nowrap">Logout</h3>
-                </a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="flex gap-1 p-4 hover:bg-purple-800 hover:text-white">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <h3 class="transition-all hidden whitespace-nowrap">Logout</h3>
+                    </button>
+                </form>
             </li>
         </ul>
     </div>

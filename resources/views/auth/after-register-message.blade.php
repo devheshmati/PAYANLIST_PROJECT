@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout title="After Registering Page">
     <x-main>
         <div class="p-4 bg-gray-800 flex m-auto w-50">
             <p class="text-white flex">You are registered, You can login know but you can use the feature,

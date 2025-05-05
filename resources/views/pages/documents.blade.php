@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout title="Documents Page">
     <x-header />
     <x-main>
         <p>This is Documents page</p>

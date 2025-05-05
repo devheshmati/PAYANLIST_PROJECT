@@ -34,7 +34,7 @@
     ];
 @endphp
 
-<x-layout>
+<x-layout title="Home Page">
     <x-header />
     <x-main>
 

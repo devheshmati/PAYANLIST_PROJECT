@@ -1,8 +1,8 @@
 const sidebar = document.querySelector('.sidebar');
 const sidebarToggleButton = document.querySelector('.sidebar-toggle-button');
 const main = document.querySelector('main');
-const sidebarTitles = document.querySelectorAll('.sidebar h3');
-const sidebarList = document.querySelector('.sidebar-list');
+const sidebarTitles = document.querySelectorAll('.sidebar .sidebar-title');
+const sidebarLists = document.querySelectorAll('.sidebar-list');
 
 sidebarToggleButton.addEventListener('click', function () {
     sidebar.classList.toggle('active');
@@ -13,8 +13,10 @@ sidebarToggleButton.addEventListener('click', function () {
         main.classList.add('ps-[200px]');
 
         // handle sidebar list
-        sidebarList.classList.remove('items-center');
-        sidebarList.classList.add('ps-[0.5rem]');
+        sidebarLists.forEach(sidebarList => {
+            sidebarList.classList.remove('items-center');
+            sidebarList.classList.add('ps-[0.5rem]');
+        })
 
         // handle sidebar toggle button icon
         sidebarToggleButton.querySelector('.sidebar-close-icon').classList.remove('hidden');
@@ -34,8 +36,10 @@ sidebarToggleButton.addEventListener('click', function () {
         main.classList.add('ps-[50px]');
 
         // handle sidebar list
-        sidebarList.classList.remove('ps-[0.5rem]');
-        sidebarList.classList.add('items-center');
+        sidebarLists.forEach(sidebarList => {
+            sidebarList.classList.remove('ps-[0.5rem]');
+            sidebarList.classList.add('items-center');
+        })
 
         // handle sidebar toggle button icon
         sidebarToggleButton.querySelector('.sidebar-bars-icon').classList.remove('hidden');

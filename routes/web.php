@@ -10,11 +10,11 @@ Route::get('/', function () {
 
 Route::prefix('/auth')->group(function () {
     // login
-    Route::get('/login', [AuthController::class, 'showLogin']);
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('showLogin');
     Route::post('/login', [AuthController::class, 'login'])->name('login');
 
     // register
-    Route::get('/register', [AuthController::class, 'showRegister']);
+    Route::get('/register', [AuthController::class, 'showRegister'])->name('showRegister');
     Route::post('/register', [AuthController::class, 'register'])->name("register");
 
     // forget password

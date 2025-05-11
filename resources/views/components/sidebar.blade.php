@@ -14,38 +14,38 @@
         <ul class="sidebar-list flex flex-col justify-center items-center transition-all overflow-x-hidden pt-20">
             <li class="sidebar-item">
                 <a href="{{ route('user.dashboard') }}" class="flex gap-1 p-4 hover:bg-purple-800 hover:text-white">
-                    <i class="fa-solid fa-layer-group"></i>
-                    <h3 class="sidebar-title transition-all hidden whitespace-nowrap">Workflows</h3>
+                    <i title="Workspaces" class="fa-solid fa-layer-group"></i>
+                    <h3 class="sidebar-title transition-all hidden whitespace-nowrap">Workspaces</h3>
                 </a>
                 <div class="flex gap-1 p-4 hover:bg-purple-800 hover:text-white">
-                    <i class="fa-solid fa-plus"></i>
+                    <i title="Create Workspace" class="fa-solid fa-plus"></i>
                     <button type="button" class="sidebar-title transition-all hidden whitespace-nowrap">Create
-                        Workflow</button>
+                        Workspace</button>
                 </div>
             </li>
         </ul>
         <ul class="sidebar-list flex flex-col justify-center items-center transition-all overflow-x-hidden mt-4">
             <li class="sidebar-item">
                 <a href="{{ route('user.dashboard') }}" class="flex gap-1 p-4 hover:bg-purple-800 hover:text-white">
-                    <i class="fa-solid fa-gauge"></i>
+                    <i title="Dashboard" class="fa-solid fa-gauge"></i>
                     <h3 class="sidebar-title transition-all hidden whitespace-nowrap">Dashboard</h3>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a href="{{ route('user.profile') }}" class="flex gap-1 p-4 hover:bg-purple-800 hover:text-white">
-                    <i class="fa-solid fa-user"></i>
+                    <i title="Profile" class="fa-solid fa-user"></i>
                     <h3 class="sidebar-title transition-all hidden whitespace-nowrap">Profile</h3>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a href="{{ route('user.reports') }}" class="flex gap-1 p-4 hover:bg-purple-800 hover:text-white">
-                    <i class="fa-solid fa-newspaper"></i>
+                    <i title="Reports" class="fa-solid fa-newspaper"></i>
                     <h3 class="sidebar-title transition-all hidden whitespace-nowrap">Reports</h3>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a href="{{ route('user.settings') }}" class="flex gap-1 p-4 hover:bg-purple-800 hover:text-white">
-                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                    <i title="Settings" class="fa-solid fa-screwdriver-wrench"></i>
                     <h3 class="sidebar-title transition-all hidden whitespace-nowrap">Settings</h3>
                 </a>
             </li>
@@ -53,7 +53,7 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="flex gap-1 p-4 hover:bg-purple-800 hover:text-white">
-                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <i title="Logout" class="fa-solid fa-right-from-bracket"></i>
                         <h3 class="sidebar-title transition-all hidden whitespace-nowrap">Logout</h3>
                     </button>
                 </form>

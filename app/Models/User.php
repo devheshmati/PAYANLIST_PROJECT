@@ -73,4 +73,14 @@ class User extends Authenticatable
             ->withPivot('workspace_id')
             ->withTimestamps();
     }
+
+    public function createdTasks(): HasMany
+    {
+        return $this->hasMany(Task::class, 'created_by');
+    }
+
+    public function assignedTasks(): BelongsToMany
+    {
+        return $this->belongsToMany(Task::class)->withTimestamps();
+    }
 }

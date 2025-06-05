@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Workspace extends Model
 {
-    public $fillable = ['name'];
+    public $fillable = ['name', 'description', 'created_by'];
 
 
     public function creator(): BelongsTo

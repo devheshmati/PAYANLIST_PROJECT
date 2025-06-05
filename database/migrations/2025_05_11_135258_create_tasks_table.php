@@ -18,9 +18,11 @@ return new class extends Migration
             $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
             $table->foreignId('workspace_id')->constrained('workspaces')->onDelete('cascade');
             $table->enum('priority', ['low', 'medium', 'high']);
-            $table->enum('status', ['todo', 'in_progress', 'done']);
+            $table->enum('status', ['todo', 'in_progress', 'done'])->default('todo');
             $table->unsignedTinyInteger('score')->default(1)->checkBetween(1, 3);
             $table->timestamps();
+
+            $table->unique(['workspace_id', 'title']);
         });
     }
 

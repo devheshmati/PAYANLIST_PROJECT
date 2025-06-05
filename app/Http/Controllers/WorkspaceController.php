@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Workspace;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class UserWorkflowsController extends Controller
+class WorkspaceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('user.workflows');
+        $newArr = Workspace::all();
+        return view('user.workspaces.index', ['workspaces' => $newArr]);
     }
 
     /**
@@ -19,7 +22,7 @@ class UserWorkflowsController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.workspaces.create');
     }
 
     /**
@@ -27,7 +30,18 @@ class UserWorkflowsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = $request->validate([
+            'name' => 'required|string|max:255|unique:workspaces',
+            'description' => 'nullable|string',
+        ]);
+
+        $newWorkspace = Workspace::create([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'created_by' => Auth::id()
+        ]);
+
+        return redirect()->back()->with('message', 'The new workspace is created!');
     }
 
     /**
@@ -35,7 +49,10 @@ class UserWorkflowsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $workspace = Workspace::find($id);
+        $tasks = $workspace->tasks;
+
+        return view('user.workspaces.show', ['workspace' => $workspace, 'tasks' => $tasks]);
     }
 
     /**

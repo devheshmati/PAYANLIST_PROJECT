@@ -3,7 +3,7 @@
     <x-main class="ps-[50px] transition-all font-[Roboto] text-white">
         <section class="bg-slate-800">
             <div class="p-4">
-                <h1 class="font-[Oswald] text-2xl text-right font-bold">This is Dashboard Page</h1>
+                <h1 class="font-[Oswald] text-2xl text-right font-bold">Dashboard</h1>
             </div>
         </section>
 

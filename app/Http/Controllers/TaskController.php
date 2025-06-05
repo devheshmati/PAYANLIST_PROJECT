@@ -89,4 +89,20 @@ class TaskController extends Controller
     {
         return "Delete Task id: $id";
     }
+
+    public function updateStatus(Request $request, Workspace $workspace, Task $task)
+    {
+        $request->validate([
+            'status' => 'required|in:todo,in_progress,done'
+        ]);
+
+        if ($task->workspace_id !== $workspace->id) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $task->status = $request->status;
+        $task->save();
+
+        return response()->json(['message' => 'Task status updated successfully']);
+    }
 }

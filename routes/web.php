@@ -53,4 +53,5 @@ Route::middleware(['auth'])->prefix('user')->group(function () {
 
     // tasks
     Route::resource('workspaces.tasks', TaskController::class);
+    Route::post('workspaces/{workspace}/tasks/{task}/update-status', [TaskController::class, 'updateStatus'])->name('workspaces.tasks.updateStatus');
 });

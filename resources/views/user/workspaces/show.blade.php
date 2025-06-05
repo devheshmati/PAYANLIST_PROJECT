@@ -21,8 +21,8 @@
                         @if ($tasks)
                             @foreach ($tasks as $item)
                                 @if ($item->status === 'todo')
-                                    <li
-                                        class="task-item flex justify-between gap-4 bg-[rgba(160,160,180,0.5)] w-[90%] mx-auto">
+                                    <li class="task-item flex justify-between gap-4 bg-[rgba(160,160,180,0.5)] w-[90%] mx-auto"
+                                        data-id="{{ $item->id }}">
                                         <span class="flex justify-between items-center w-100 px-2 py-4 gap-4">
                                             <span class="flex justify-between items-center gap-2">
                                                 <span class="text-xs font-bold">
@@ -89,8 +89,8 @@
                         @if ($tasks)
                             @foreach ($tasks as $item)
                                 @if ($item->status === 'in_progress')
-                                    <li
-                                        class="task-item flex justify-between gap-4 bg-[rgba(160,160,180,0.5)] w-[90%] mx-auto">
+                                    <li class="task-item flex justify-between gap-4 bg-[rgba(160,160,180,0.5)] w-[90%] mx-auto"
+                                        data-id="{{ $item->id }}">
                                         <span class="flex justify-between items-center w-100 px-2 py-4 gap-4">
                                             <span class="flex justify-between items-center gap-2">
                                                 <span class="text-xs font-bold">
@@ -157,8 +157,8 @@
                         @if ($tasks)
                             @foreach ($tasks as $item)
                                 @if ($item->status === 'done')
-                                    <li
-                                        class="task-item flex justify-between gap-4 bg-[rgba(160,160,180,0.5)] w-[90%] mx-auto">
+                                    <li class="task-item flex justify-between gap-4 bg-[rgba(160,160,180,0.5)] w-[90%] mx-auto"
+                                        data-id="{{ $item->id }}">
                                         <span class="flex justify-between items-center w-100 px-2 py-4 gap-4">
                                             <span class="flex justify-between items-center gap-2">
                                                 <span class="text-xs font-bold">
@@ -279,30 +279,6 @@
         </section>
     </x-main>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const workspaceId = document.querySelector('#workspace-id').value;
-            const todoTasksList = document.querySelector('#todo-tasks-list');
-            const inProgressTasksList = document.querySelector('#in-progress-tasks-list');
-            const doneTasksList = document.querySelector('#done-tasks-list');
-            // put all lists in one array
-            const allLists = [
-                todoTasksList,
-                inProgressTasksList,
-                doneTasksList
-            ];
-            // get csrf token
-            const csrf = document.querySelector('#csrf-token').value;
-
-            if (allLists) {
-                allLists.forEach((item) => {
-                    new Sortable(item, {
-                        animation: 150,
-                        group: "tasks",
-                    })
-                })
-            }
-        });
-    </script>
-
+    {{-- Add drag and drop and task status changer --}}
+    @vite('./resources/js/tasksStatusChangerScript.js');
 </x-layout>

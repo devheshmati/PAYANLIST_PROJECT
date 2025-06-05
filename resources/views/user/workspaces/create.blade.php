@@ -16,6 +16,11 @@
                             <p>{{ session('message') }}</p>
                         </div>
                     @endif
+                    @if (session('alertMessage'))
+                        <div class="bg-red-600 p-2 rounded-lg">
+                            <p>{{ session('alertMessage') }}</p>
+                        </div>
+                    @endif
                     @csrf
                     <div class="flex gap-2 justify-between">
                         <h2 class="font-[Oswald] font-bold text-xl">Create new workspace</h2>

@@ -35,13 +35,21 @@ class WorkspaceController extends Controller
             'description' => 'nullable|string',
         ]);
 
-        $newWorkspace = Workspace::create([
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-            'created_by' => Auth::id()
-        ]);
+        $userCreatedWorkspaces = $request->user()->createdWorkspaces;
 
-        return redirect()->back()->with('message', 'The new workspace is created!');
+        // check if user reach to the maximum capacity for making workspace
+        $maxWorkspaceCapacity = 5;
+        if ($userCreatedWorkspaces->count() < $maxWorkspaceCapacity) {
+            $newWorkspace = Workspace::create([
+                'name' => $request->input('name'),
+                'description' => $request->input('description'),
+                'created_by' => Auth::id()
+            ]);
+
+            return redirect()->back()->with('message', 'The new workspace is created!');
+        } else {
+            return redirect()->back()->with('alertMessage', 'You have reached maximum capacity in free account! For unlimited features Upgrade your account.');
+        }
     }
 
     /**

@@ -25,7 +25,7 @@
                     <div class="flex gap-2 justify-between">
                         <h2 class="font-[Oswald] font-bold text-xl">Create new workspace</h2>
                         <div class="text-right">
-                            <span>0</span>
+                            <span>{{ Auth::user()->createdWorkspaces->count() }}</span>
                             <span>/</span>
                             <span>5</span>
                         </div>

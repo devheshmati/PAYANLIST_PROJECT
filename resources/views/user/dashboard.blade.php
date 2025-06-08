@@ -55,15 +55,15 @@
                 <div class="flex justify-between bg-slate-500 px-10 py-4 mx-auto w-[90%]">
                     <div class="text-slate-300">
                         <h6 class="font-bold font-[Oswald]">Total Todo Task</h6>
-                        <p class="font-bold font-[Oswald] text-3xl">14</p>
+                        <p class="font-bold font-[Oswald] text-3xl">{{ $allTodoTasksCount }}</p>
                     </div>
                     <div class="text-orange-300">
-                        <h6 class="font-bold font-[Oswald]">Total Todo Task</h6>
-                        <p class="font-bold font-[Oswald] text-3xl">4</p>
+                        <h6 class="font-bold font-[Oswald]">Total In Progress Task</h6>
+                        <p class="font-bold font-[Oswald] text-3xl">{{ $allInProgressTasksCount }}</p>
                     </div>
                     <div class="text-lime-300">
-                        <h6 class="font-bold font-[Oswald]">Total Todo Task</h6>
-                        <p class="font-bold font-[Oswald] text-3xl">100</p>
+                        <h6 class="font-bold font-[Oswald]">Total Done Task</h6>
+                        <p class="font-bold font-[Oswald] text-3xl">{{ $allDoneTasksCount }}</p>
                     </div>
                 </div>
             </div>

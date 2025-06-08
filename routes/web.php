@@ -34,31 +34,25 @@ Route::prefix('/auth')->group(function () {
 // user panel
 Route::middleware(['auth'])->prefix('user')->group(function () {
     Route::get('dashboard', function () {
+
         $user = Auth::user(); // get current user
-        $userCreateWorkspaces = $user->createdWorkspaces(); // get all user created workspaces as a method to more action
 
-        // get all todo tasks
-        $allTodoTasksCount = $userCreateWorkspaces->withCount([
-            'tasks as todo_tasks_count' => function ($query) {
-                $query->where('status', 'todo');
-            }
-        ])->get()->sum('todo_tasks_count');
+        $workspaces = $user->createdWorkspaces()->withCount([
+            'tasks as todo_tasks_count' => fn($query) => $query->where('status', 'todo'),
+            'tasks as in_progress_tasks_count' => fn($query) => $query->where('status', 'in_progress'),
+            'tasks as done_tasks_count' => fn($query) => $query->where('status', 'done'),
+        ])->get();
 
-        // get all inProgress tasks
-        $allInPorgressTasksCount = $userCreateWorkspaces->withCount([
-            'tasks as in_progress_tasks_count' => function ($query) {
-                $query->where('status', 'in_progress');
-            }
-        ])->get()->sum('in_progress_tasks_count');
+        // Sum each type of task count across all workspaces
+        $allTodoTasksCount = $workspaces->sum('todo_tasks_count');
+        $allInProgressTasksCount = $workspaces->sum('in_progress_tasks_count');
+        $allDoneTasksCount = $workspaces->sum('done_tasks_count');
 
-        // get all done tasks
-        $allDoneTasksCount = $userCreateWorkspaces->withCount([
-            'tasks as done_tasks_count' => function ($query) {
-                $query->where('status', 'done');
-            }
-        ])->get()->sum('done_tasks_count');
-
-        return view('user.dashboard', ['allTodoTasksCount' => $allTodoTasksCount, 'allInProgressTasksCount' => $allInPorgressTasksCount, 'allDoneTasksCount' => $allDoneTasksCount]);
+        return view('user.dashboard', [
+            'allTodoTasksCount' => $allTodoTasksCount,
+            'allInProgressTasksCount' => $allInProgressTasksCount,
+            'allDoneTasksCount' => $allDoneTasksCount,
+        ]);
     })->name('user.dashboard');
 
     Route::get('profile', function () {

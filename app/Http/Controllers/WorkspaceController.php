@@ -67,7 +67,7 @@ class WorkspaceController extends Controller
      */
     public function show(string $id)
     {
-        $workspace = Workspace::find($id);
+        $workspace = Auth::user()->createdWorkspaces->where('id', $id)->firstOrFail();
         $tasks = $workspace->tasks;
 
         return view('user.workspaces.show', ['workspace' => $workspace, 'tasks' => $tasks]);

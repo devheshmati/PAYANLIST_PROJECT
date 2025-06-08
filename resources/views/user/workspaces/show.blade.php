@@ -222,55 +222,98 @@
         </section>
 
         <section class="bg-gradient-to-b from-slate-900 to-slate-600">
-            <div class="p-4">
-                <h3 class="font-[Oswald] text-2xl font-bold">New Task</h3>
-                <form method="POST" action="{{ route('workspaces.tasks.store', $workspace) }}"
-                    class="flex flex-col gap-4 bg-gradient-to-br from-slate-950 to-slate-800 p-4 rounded-lg mt-4 w-[50%]">
-                    @csrf
-                    <div class="flex flex-col gap-2">
-                        <label for="title">Task Title</label>
-                        @error('title')
-                            <div>
-                                <p class="text-red-400">{{ $message }}</p>
+            <div class="flex">
+                {{-- creating tasks and inviting users form section --}}
+                <div class="flex flex-1">
+                    {{-- create task form --}}
+                    <div class="p-4">
+                        <h3 class="font-[Oswald] text-2xl font-bold">New Task</h3>
+                        <form method="POST" action="{{ route('workspaces.tasks.store', $workspace) }}"
+                            class="flex flex-col gap-4 bg-gradient-to-br from-slate-950 to-slate-800 p-4 rounded-lg mt-4">
+                            @csrf
+                            <div class="flex flex-col gap-2">
+                                <label for="title">Task Title</label>
+                                @error('title')
+                                    <div>
+                                        <p class="text-red-400">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                                <input id="title" type="text" name="title" placeholder="Task title..."
+                                    class="border-1 border-slate-400 py-2 px-4 rounded-lg">
                             </div>
-                        @enderror
-                        <input id="title" type="text" name="title" placeholder="Task title..."
-                            class="border-1 border-slate-400 py-2 px-4 rounded-lg">
-                    </div>
-                    <div class="flex flex-col gap-2">
-                        <label for="description">Task Description</label>
-                        @error('description')
-                            <div>
-                                <p class="text-red-400">{{ $message }}</p>
+                            <div class="flex flex-col gap-2">
+                                <label for="description">Task Description</label>
+                                @error('description')
+                                    <div>
+                                        <p class="text-red-400">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                                <input id="description" type="text" name="description"
+                                    placeholder="Task description..."
+                                    class="border-1 border-slate-400 py-2 px-4 rounded-lg">
                             </div>
-                        @enderror
-                        <input id="description" type="text" name="description" placeholder="Task description..."
-                            class="border-1 border-slate-400 py-2 px-4 rounded-lg">
+
+                            {{-- priority --}}
+                            <div class="flex flex-col gap-2">
+                                <label for="priority">Priority</label>
+                                <select id="priority" name="priority" class="bg-slate-500 p-2 rounded-lg">
+                                    <option value="low" selected="selected">Low</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="high">High</option>
+                                </select>
+                            </div>
+
+                            {{-- score --}}
+                            <div class="flex flex-col gap-2">
+                                <label for="score">Score</label>
+                                <select id="score" name="score" class="bg-slate-500 p-2 rounded-lg">
+                                    <option value="1" selected="selected">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+                            <div>
+                                <button type="submit" class="bg-purple-600 rounded-lg px-4 py-2">Create Task</button>
+                            </div>
+                        </form>
                     </div>
 
-                    {{-- priority --}}
-                    <div class="flex flex-col gap-2">
-                        <label for="priority">Priority</label>
-                        <select id="priority" name="priority" class="bg-slate-500 p-2 rounded-lg">
-                            <option value="low" selected="selected">Low</option>
-                            <option value="medium">Medium</option>
-                            <option value="high">High</option>
-                        </select>
-                    </div>
+                    {{-- user invitation section --}}
+                    <div class="p-4">
+                        <h3 class="font-[Oswald] text-2xl font-bold">Invite New User</h3>
+                        <form method="POST" action=""
+                            class="flex flex-col gap-4 bg-gradient-to-br from-slate-950 to-slate-800 p-4 rounded-lg mt-4">
+                            @csrf
+                            <div class="flex flex-col gap-2">
+                                <label for="username">User Name</label>
+                                @error('title')
+                                    <div>
+                                        <p class="text-red-400">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                                <input id="username" type="text" name="username"
+                                    placeholder="Enter target username."
+                                    class="border-1 border-slate-400 py-2 px-4 rounded-lg">
+                            </div>
 
-                    {{-- score --}}
-                    <div class="flex flex-col gap-2">
-                        <label for="score">Score</label>
-                        <select id="score" name="score" class="bg-slate-500 p-2 rounded-lg">
-                            <option value="1" selected="selected">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
+                            <div>
+                                <button type="submit" class="bg-purple-600 rounded-lg px-4 py-2">Invite User</button>
+                            </div>
+                        </form>
                     </div>
-                    <div>
-                        <button type="submit" class="bg-purple-600 rounded-lg px-4 py-2">Create Task</button>
+                </div>
+                {{-- users lists and chat system section, intraction between users --}}
+                <div class="flex-1">
+                    <div class="p-4">
+                        <h3 class="font-[Oswald] text-2xl font-bold">Users List</h3>
+                        <ul class="bg-gradient-to-br from-slate-950 to-slate-800 p-4 mt-4 rounded-lg">
+                            <li>user one</li>
+                            <li>user one</li>
+                            <li>user one</li>
+                            <li>user one</li>
+                        </ul>
                     </div>
-                </form>
+                </div>
             </div>
         </section>
         <section class="hidden bg-red-400">

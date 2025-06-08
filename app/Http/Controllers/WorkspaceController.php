@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Workspace;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class WorkspaceController extends Controller
 {
@@ -13,8 +14,10 @@ class WorkspaceController extends Controller
      */
     public function index()
     {
-        $newArr = Workspace::all();
-        return view('user.workspaces.index', ['workspaces' => $newArr]);
+        $user = Auth::user();
+        $userCreatedWorkspaces = $user->createdWorkspaces;
+
+        return view('user.workspaces.index', ['workspaces' => $userCreatedWorkspaces]);
     }
 
     /**
@@ -30,8 +33,15 @@ class WorkspaceController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = $request->validate([
-            'name' => 'required|string|max:255|unique:workspaces',
+        $request->validate([
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('workspaces')->where(function ($query) use ($request) {
+                    return $query->where('created_by', $request->user()->id);
+                }),
+            ],
             'description' => 'nullable|string',
         ]);
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\Workspace;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -69,8 +70,10 @@ class WorkspaceController extends Controller
     {
         $workspace = Auth::user()->createdWorkspaces->where('id', $id)->firstOrFail();
         $tasks = $workspace->tasks;
+        $roles = Role::all();
+        $userInvitedList = $workspace->userWorkspaceRoles;
 
-        return view('user.workspaces.show', ['workspace' => $workspace, 'tasks' => $tasks]);
+        return view('user.workspaces.show', ['workspace' => $workspace, 'tasks' => $tasks, 'roles' => $roles, 'userInvitedList' => $userInvitedList]);
     }
 
     /**

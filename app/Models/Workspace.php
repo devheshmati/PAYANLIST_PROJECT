@@ -24,15 +24,13 @@ class Workspace extends Model
             ->withTimestamps();
     }
 
-    public function roles(): BelongsToMany
-    {
-        return $this->belongsToMany(Role::class, 'user_workspace_roles')
-            ->withPivot('user_id')
-            ->withTimestamps();
-    }
-
     public function tasks(): HasMany
     {
         return $this->hasMany(Task::class);
+    }
+
+    public function userWorkspaceRoles()
+    {
+        return $this->hasMany(UserWorkspaceRole::class);
     }
 }

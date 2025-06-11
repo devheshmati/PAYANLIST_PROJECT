@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignId('workspace_id')->constrained()->onDelete('cascade');
             $table->foreignId('role_id')->constrained()->onDelete('restrict');
             $table->timestamps();
+
+            $table->unique(['user_id', 'workspace_id']);
         });
     }
 

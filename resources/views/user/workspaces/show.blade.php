@@ -281,19 +281,54 @@
                     {{-- user invitation section --}}
                     <div class="p-4">
                         <h3 class="font-[Oswald] text-2xl font-bold">Invite New User</h3>
-                        <form method="POST" action=""
+                        <form method="POST" action="{{ route('user.workspace.invite', $workspace) }}"
                             class="flex flex-col gap-4 bg-gradient-to-br from-slate-950 to-slate-800 p-4 rounded-lg mt-4">
                             @csrf
+                            @if ($errors->has('userError'))
+                                <div class="text-red-500 p-2 bg-red-100 rounded-lg my-2">
+                                    {{ $errors->first('userError') }}
+                                </div>
+                            @endif
+                            @if (session('successMessage'))
+                                <div class="text-lime-500 p-2 bg-lime-100 rounded-lg my-2">
+                                    {{ session('successMessage') }}
+                                </div>
+                            @endif
+
                             <div class="flex flex-col gap-2">
-                                <label for="username">User Name</label>
-                                @error('title')
+                                <label for="email">User Email</label>
+                                @error('email')
                                     <div>
                                         <p class="text-red-400">{{ $message }}</p>
                                     </div>
                                 @enderror
-                                <input id="username" type="text" name="username"
-                                    placeholder="Enter target username."
+                                <input id="email" type="email" name="email"
+                                    placeholder="Enter target email."
                                     class="border-1 border-slate-400 py-2 px-4 rounded-lg">
+                            </div>
+
+                            {{-- roles selections --}}
+                            <div class="flex flex-col gap-2">
+                                @if ($roles->isEmpty())
+                                    <div class="p-4 my-4 text-sm text-yellow-800 rounded-lg bg-yellow-100 dark:bg-gray-700 dark:text-yellow-300"
+                                        role="alert">
+                                        <span class="font-bold">There is not defined any roles!</span>
+                                        <span class="font-normal">Just Super Admin Can define that!</span>
+                                    </div>
+                                @else
+                                    <label for="role">Role</label>
+                                    <select id="role" name="role_id" class="bg-slate-500 p-2 rounded-lg">
+                                        @foreach ($roles as $role)
+                                            @if ($role->name === 'member')
+                                                <option value="{{ $role->id }}" selected>
+                                                    {{ ucfirst($role->name) }}</option>
+                                            @else
+                                                <option value="{{ $role->id }}">
+                                                    {{ ucfirst($role->name) }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                @endif
                             </div>
 
                             <div>
@@ -306,12 +341,20 @@
                 <div class="flex-1">
                     <div class="p-4">
                         <h3 class="font-[Oswald] text-2xl font-bold">Users List</h3>
-                        <ul class="bg-gradient-to-br from-slate-950 to-slate-800 p-4 mt-4 rounded-lg">
-                            <li>user one</li>
-                            <li>user one</li>
-                            <li>user one</li>
-                            <li>user one</li>
-                        </ul>
+                        @if ($userInvitedList->isEmpty())
+                            <div class="p-4 my-4 text-sm text-yellow-800 rounded-lg bg-yellow-100 dark:bg-gray-700 dark:text-yellow-300"
+                                role="alert">
+                                <span class="font-bold">There is no any invited user in this workspace!</span>
+                                <span class="font-normal">You can invite user in your workspace with invitation
+                                    form.</span>
+                            </div>
+                        @else
+                            <ul class="bg-gradient-to-br from-slate-950 to-slate-800 p-4 mt-4 rounded-lg">
+                                @foreach ($userInvitedList as $user)
+                                    <li>{{ $user->user->email }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\WorkspaceController;
+use App\Http\Controllers\WorkspaceInvitationController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -34,7 +35,6 @@ Route::prefix('/auth')->group(function () {
 // user panel
 Route::middleware(['auth'])->prefix('user')->group(function () {
     Route::get('dashboard', function () {
-
         $user = Auth::user(); // get current user
 
         $workspaces = $user->createdWorkspaces()->withCount([
@@ -67,10 +67,14 @@ Route::middleware(['auth'])->prefix('user')->group(function () {
         return view('user.reports');
     })->name('user.reports');
 
-    // workflows
+    // workspace
     Route::resource('workspaces', WorkspaceController::class);
 
-    // tasks
+    // task
     Route::resource('workspaces.tasks', TaskController::class);
     Route::post('workspaces/{workspace}/tasks/{task}/update-status', [TaskController::class, 'updateStatus'])->name('workspaces.tasks.updateStatus');
+
+    // workspace invitation
+    Route::post('workspaces/{workspace}/invite', [WorkspaceInvitationController::class, 'invite'])
+        ->name('user.workspace.invite');
 });

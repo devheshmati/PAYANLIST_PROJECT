@@ -67,11 +67,9 @@ class User extends Authenticatable
             ->withTimestamps();
     }
 
-    public function roles(): BelongsToMany
+    public function userWorkspaceRoles()
     {
-        return $this->belongsToMany(Role::class, 'user_workspace_roles')
-            ->withPivot('workspace_id')
-            ->withTimestamps();
+        return $this->hasMany(UserWorkspaceRole::class);
     }
 
     public function createdTasks(): HasMany

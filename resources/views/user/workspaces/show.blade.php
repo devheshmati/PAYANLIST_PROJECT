@@ -357,8 +357,7 @@
                                             {{ $item->user->email }}
                                         </span>
                                         <span class="text-yellow-400 bg-slate-600 p-2 rounded-lg">
-                                            {{-- {{ dd($item->role_id) }} --}}
-                                            {{ ucfirst($roles->where('id', $item->role_id)->first()->name) }}
+                                            {{ ucfirst(optional($roles->where('id', $item->role_id)->first())->name ?? '_') }}
                                         </span>
                                     </li>
                                 @endforeach

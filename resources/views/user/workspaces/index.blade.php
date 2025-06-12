@@ -28,7 +28,7 @@
                                         <div class="text-sm text-slate-400 flex flex-col gap-4">
                                             <div>
                                                 <span>Members:</span>
-                                                <span>15</span>
+                                                <span>{{ $item->users->count() }}</span>
                                             </div>
                                             <div>
                                                 <span>Team</span>

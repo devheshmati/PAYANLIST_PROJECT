@@ -16,7 +16,7 @@ class WorkspaceController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $userCreatedWorkspaces = $user->createdWorkspaces;
+        $userCreatedWorkspaces = $user->createdWorkspaces()->with('users')->get();
 
         return view('user.workspaces.index', ['workspaces' => $userCreatedWorkspaces]);
     }

@@ -350,8 +350,17 @@
                             </div>
                         @else
                             <ul class="bg-gradient-to-br from-slate-950 to-slate-800 p-4 mt-4 rounded-lg">
-                                @foreach ($userInvitedList as $user)
-                                    <li>{{ $user->user->email }}</li>
+                                @foreach ($userInvitedList as $item)
+                                    <li
+                                        class="flex justify-between items-center border-1 border-slate-600 p-2 rounded-lg">
+                                        <span>
+                                            {{ $item->user->email }}
+                                        </span>
+                                        <span class="text-yellow-400 bg-slate-600 p-2 rounded-lg">
+                                            {{-- {{ dd($item->role_id) }} --}}
+                                            {{ ucfirst($roles->where('id', $item->role_id)->first()->name) }}
+                                        </span>
+                                    </li>
                                 @endforeach
                             </ul>
                         @endif

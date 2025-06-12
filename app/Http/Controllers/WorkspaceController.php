@@ -70,7 +70,7 @@ class WorkspaceController extends Controller
     {
         $workspace = Auth::user()->createdWorkspaces->where('id', $id)->firstOrFail();
         $tasks = $workspace->tasks;
-        $roles = Role::all();
+        $roles = Role::all()->keyBy('id');
         $userInvitedList = $workspace->userWorkspaceRoles;
 
         return view('user.workspaces.show', ['workspace' => $workspace, 'tasks' => $tasks, 'roles' => $roles, 'userInvitedList' => $userInvitedList]);

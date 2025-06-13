@@ -46,15 +46,21 @@ class WorkspaceController extends Controller
             'description' => 'nullable|string',
         ]);
 
-        $userCreatedWorkspaces = $request->user()->createdWorkspaces;
+        $user = $request->user();
+        $userCreatedWorkspaces = $user->createdWorkspaces;
+        $maxWorkspaceCapacity = 5; // check if user reach to the maximum capacity for making workspace
 
-        // check if user reach to the maximum capacity for making workspace
-        $maxWorkspaceCapacity = 5;
         if ($userCreatedWorkspaces->count() < $maxWorkspaceCapacity) {
             $newWorkspace = Workspace::create([
                 'name' => $request->input('name'),
                 'description' => $request->input('description'),
                 'created_by' => Auth::id()
+            ]);
+
+            // add owner user to the workspace
+            $ownerRole = Role::where('name', 'owner')->first(); // یا مقدار id مستقیم بنویس
+            $newWorkspace->users()->attach($user->id, [
+                'role_id' => $ownerRole->id ?? 1, // if owner not exist set 1
             ]);
 
             return redirect()->back()->with('message', 'The new workspace is created!');
@@ -68,12 +74,20 @@ class WorkspaceController extends Controller
      */
     public function show(string $id)
     {
-        $workspace = Auth::user()->createdWorkspaces->where('id', $id)->firstOrFail();
+        $user = Auth::user();
+        $workspace = $user->createdWorkspaces->where('id', $id)->firstOrFail();
         $tasks = $workspace->tasks;
         $roles = Role::all()
             ->filter(fn($role) => strtolower($role->name) !== 'owner')
             ->keyBy('id');
         $userInvitedList = $workspace->userWorkspaceRoles;
+
+        // last opened workspace handled
+        if ($workspace->users->contains($user->id)) {
+            $workspace->users()->updateExistingPivot($user->id, [
+                'last_opened_at' => now()
+            ]);
+        }
 
         return view('user.workspaces.show', ['workspace' => $workspace, 'tasks' => $tasks, 'roles' => $roles, 'userInvitedList' => $userInvitedList]);
     }

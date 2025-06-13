@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('workspace_id')->constrained()->onDelete('cascade');
             $table->foreignId('role_id')->constrained()->onDelete('restrict');
+            $table->timestamp('last_opened_at')->nullable();
             $table->timestamps();
 
             $table->unique(['user_id', 'workspace_id']);

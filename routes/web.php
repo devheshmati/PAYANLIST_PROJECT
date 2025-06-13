@@ -48,10 +48,19 @@ Route::middleware(['auth'])->prefix('user')->group(function () {
         $allInProgressTasksCount = $workspaces->sum('in_progress_tasks_count');
         $allDoneTasksCount = $workspaces->sum('done_tasks_count');
 
+        // get last workspace opend by user
+        $maxRecentCount = 3;
+        $recentWorkspaces = $user->workspaces()
+            ->withPivot('last_opened_at')
+            ->orderByDesc('user_workspace_roles.last_opened_at')
+            ->take($maxRecentCount)
+            ->get();
+
         return view('user.dashboard', [
             'allTodoTasksCount' => $allTodoTasksCount,
             'allInProgressTasksCount' => $allInProgressTasksCount,
             'allDoneTasksCount' => $allDoneTasksCount,
+            'recentWorkspaces' => $recentWorkspaces
         ]);
     })->name('user.dashboard');
 

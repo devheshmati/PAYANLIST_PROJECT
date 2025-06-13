@@ -357,7 +357,11 @@
                                             {{ $item->user->email }}
                                         </span>
                                         <span class="text-yellow-400 bg-slate-600 p-2 rounded-lg">
-                                            {{ ucfirst(optional($roles->where('id', $item->role_id)->first())->name ?? '_') }}
+                                            @if ($item->role_id === 1)
+                                                Owner
+                                            @else
+                                                {{ ucfirst(optional($roles->where('id', $item->role_id)->first())->name ?? '_') }}
+                                            @endif
                                         </span>
                                     </li>
                                 @endforeach

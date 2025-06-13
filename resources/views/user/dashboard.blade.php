@@ -14,34 +14,28 @@
                     Recent Workspaces
                 </h3>
 
-                <ul class="flex gap-2 mx-auto w-[90%]">
-                    <li>
-                        <a href="#"
-                            class="flex flex-col cursor-pointer bg-slate-500 p-4 rounded-lg hover:shadow-[-1px_-1px_1rem] hover:shadow-slate-white">
-                            <h4 class="text-lg">Name of workspace</h4>
-                            <div class="opacity-60 text-sm">
-                                <span>Owner: reza2boyce</span>
-                            </div>
-                            <div class="opacity-60 text-sm">
-                                <span>Last seen</span>
-                                <span>Last updated</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex flex-col cursor-pointer bg-slate-500 p-4 rounded-lg hover:shadow-[-1px_-1px_1rem] hover:shadow-slate-white">
-                            <h4 class="text-lg">Name of workspace</h4>
-                            <div class="opacity-60 text-sm">
-                                <span>Owner: reza2boyce</span>
-                            </div>
-                            <div class="opacity-60 text-sm">
-                                <span>Last seen</span>
-                                <span>Last updated</span>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
+                @if ($recentWorkspaces->isNotEmpty())
+                    <ul class="flex gap-2 mx-auto w-[90%]">
+                        @foreach ($recentWorkspaces as $item)
+                            @if ($item->pivot->last_opened_at)
+                                <li>
+                                    <a href="#"
+                                        class="flex flex-col cursor-pointer bg-slate-500 p-4 rounded-lg hover:shadow-[-1px_-1px_1rem] hover:shadow-slate-white">
+                                        <h4 class="text-lg">{{ $item->name }}</h4>
+                                        <div class="opacity-60 text-sm">
+                                            <span class="font-bold">Owner:</span>
+                                            <span>{{ $item->creator->email }}</span>
+                                        </div>
+                                        <div class="opacity-60 text-sm">
+                                            <span class="font-bold">Last seen:</span>
+                                            <span>{{ $item->pivot->last_opened_at }}</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            @endif
+                        @endforeach
+                    </ul>
+                @endif
             </div>
         </section>
 

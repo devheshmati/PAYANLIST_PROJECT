@@ -51,16 +51,21 @@ class WorkspaceController extends Controller
         $maxWorkspaceCapacity = 5; // check if user reach to the maximum capacity for making workspace
 
         if ($userCreatedWorkspaces->count() < $maxWorkspaceCapacity) {
+            // add owner user to the workspace
+            $ownerRole = Role::where('name', 'owner')->first(); // یا مقدار id مستقیم بنویس
+
+            if (!$ownerRole) {
+                return redirect()->back()->with('alertMessage', 'Role "Owner" is missing. Please seed your roles table first.');
+            }
+
             $newWorkspace = Workspace::create([
                 'name' => $request->input('name'),
                 'description' => $request->input('description'),
                 'created_by' => Auth::id()
             ]);
 
-            // add owner user to the workspace
-            $ownerRole = Role::where('name', 'owner')->first(); // یا مقدار id مستقیم بنویس
             $newWorkspace->users()->attach($user->id, [
-                'role_id' => $ownerRole->id ?? 1, // if owner not exist set 1
+                'role_id' => $ownerRole->id, // if owner not exist set 1
             ]);
 
             return redirect()->back()->with('message', 'The new workspace is created!');
@@ -75,12 +80,19 @@ class WorkspaceController extends Controller
     public function show(string $id)
     {
         $user = Auth::user();
-        $workspace = $user->createdWorkspaces->where('id', $id)->firstOrFail();
-        $tasks = $workspace->tasks;
+        $workspace = $user->createdWorkspaces->where('id', $id)->first();
+
+        if (!$workspace) {
+            abort(404, 'The page is not found.');
+        }
+
+        // eager load related models if needed
+        $workspace->load(['tasks', 'userWorkspaceRoles', 'users']);
+
+        // filter roles (exluding owner role)
         $roles = Role::all()
             ->filter(fn($role) => strtolower($role->name) !== 'owner')
             ->keyBy('id');
-        $userInvitedList = $workspace->userWorkspaceRoles;
 
         // last opened workspace handled
         if ($workspace->users->contains($user->id)) {
@@ -89,7 +101,11 @@ class WorkspaceController extends Controller
             ]);
         }
 
-        return view('user.workspaces.show', ['workspace' => $workspace, 'tasks' => $tasks, 'roles' => $roles, 'userInvitedList' => $userInvitedList]);
+        return view('user.workspaces.show', compact('workspace', 'roles'))
+            ->with([
+                'tasks' => $workspace->tasks,
+                'userInvitedList' => $workspace->userWorkspaceRoles
+            ]);
     }
 
     /**

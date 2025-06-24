@@ -56,7 +56,12 @@
             <div>
                 <a href="{{ route('home') }}"
                     class="font-[Roboto] text-sm font-bold text-blue-400 hover:text-lime-400">-> Return to
-                    home...</a>
+                    Home</a>
+            </div>
+            <div>
+                <a href="{{ route('showLogin') }}"
+                    class="font-[Roboto] text-sm font-bold text-blue-400 hover:text-lime-400">-> Go to
+                    Login Page</a>
             </div>
         </form>
     </x-main>

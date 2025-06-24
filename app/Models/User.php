@@ -67,6 +67,11 @@ class User extends Authenticatable
             ->withTimestamps();
     }
 
+    public function teams(): HasMany
+    {
+        return $this->hasMany(Team::class);
+    }
+
     public function userWorkspaceRoles()
     {
         return $this->hasMany(UserWorkspaceRole::class);

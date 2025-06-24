@@ -16,7 +16,7 @@ class WorkspaceController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $userCreatedWorkspaces = $user->createdWorkspaces()->with('users')->get();
+        $userCreatedWorkspaces = $user->createdWorkspaces()->with('users', 'creator')->get();
 
         return view('user.workspaces.index', ['workspaces' => $userCreatedWorkspaces]);
     }
@@ -104,7 +104,8 @@ class WorkspaceController extends Controller
         return view('user.workspaces.show', compact('workspace', 'roles'))
             ->with([
                 'tasks' => $workspace->tasks,
-                'userInvitedList' => $workspace->userWorkspaceRoles
+                'userInvitedList' => $workspace->userWorkspaceRoles,
+                'teamList' => $workspace->teams
             ]);
     }
 

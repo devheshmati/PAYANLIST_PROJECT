@@ -222,9 +222,9 @@
         </section>
 
         <section class="bg-gradient-to-b from-slate-900 to-slate-600">
-            <div class="flex">
-                {{-- creating tasks and inviting users form section --}}
-                <div class="flex flex-1">
+            <div class="flex flex-col">
+                {{-- creating tasks, creating team, inviting users forms section --}}
+                <div class="flex justify-center">
                     {{-- create task form --}}
                     <div class="p-4">
                         <h3 class="font-[Oswald] text-2xl font-bold">New Task</h3>
@@ -274,6 +274,36 @@
                             </div>
                             <div>
                                 <button type="submit" class="bg-purple-600 rounded-lg px-4 py-2">Create Task</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    {{-- Team managment section --}}
+                    <div class="p-4">
+                        <h3 class="font-[Oswald] text-2xl font-bold">Create New Team</h3>
+                        <form method="POST" action="{{ route('workspaces.teams.store', $workspace) }}"
+                            class="flex flex-col gap-4 bg-gradient-to-br from-slate-950 to-slate-800 p-4 rounded-lg mt-4">
+                            @csrf
+                            @if (session('teamCreationSuccessMessage'))
+                                <div class="text-lime-500 p-2 bg-lime-100 rounded-lg my-2">
+                                    {{ session('teamCreationSuccessMessage') }}
+                                </div>
+                            @endif
+
+                            <div class="flex flex-col gap-2">
+                                <label for="team-name">Team name</label>
+                                @error('name')
+                                    <div>
+                                        <p class="text-red-400">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                                <input id="team-name" type="text" name="name" placeholder="Enter Team name"
+                                    class="border-1 border-slate-400 py-2 px-4 rounded-lg">
+                            </div>
+
+                            <div>
+                                <button type="submit" class="bg-purple-600 rounded-lg px-4 py-2">Create New
+                                    Team</button>
                             </div>
                         </form>
                     </div>
@@ -337,37 +367,59 @@
                         </form>
                     </div>
                 </div>
-                {{-- users lists and chat system section, intraction between users --}}
+            </div>
+        </section>
+        {{-- users lists and chat system section, intraction between users --}}
+        <section class="bg-gradient-to-b from-slate-600 to-slate-900 py-4">
+            <div class="flex">
+                <div class="flex-1 p-4">
+                    <h3 class="font-[Oswald] text-2xl font-bold">Users List</h3>
+                    @if ($userInvitedList->isEmpty())
+                        <div class="p-4 my-4 text-sm text-yellow-800 rounded-lg bg-yellow-100 dark:bg-gray-700 dark:text-yellow-300"
+                            role="alert">
+                            <span class="font-bold">There is no any invited user in this workspace!</span>
+                            <span class="font-normal">You can invite user in your workspace with invitation
+                                form.</span>
+                        </div>
+                    @else
+                        <ul class="bg-gradient-to-br from-slate-950 to-slate-800 p-4 mt-4 rounded-lg">
+                            @foreach ($userInvitedList as $item)
+                                <li class="flex justify-between items-center border-1 border-slate-600 p-2 rounded-lg">
+                                    <span>
+                                        {{ $item->user->email }}
+                                    </span>
+                                    <span class="text-yellow-400 bg-slate-600 p-2 rounded-lg">
+                                        @if ($item->role_id === 1)
+                                            Owner
+                                        @else
+                                            {{ ucfirst(optional($roles->where('id', $item->role_id)->first())->name ?? '_') }}
+                                        @endif
+                                    </span>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
                 <div class="flex-1">
-                    <div class="p-4">
-                        <h3 class="font-[Oswald] text-2xl font-bold">Users List</h3>
-                        @if ($userInvitedList->isEmpty())
-                            <div class="p-4 my-4 text-sm text-yellow-800 rounded-lg bg-yellow-100 dark:bg-gray-700 dark:text-yellow-300"
-                                role="alert">
-                                <span class="font-bold">There is no any invited user in this workspace!</span>
-                                <span class="font-normal">You can invite user in your workspace with invitation
-                                    form.</span>
-                            </div>
-                        @else
-                            <ul class="bg-gradient-to-br from-slate-950 to-slate-800 p-4 mt-4 rounded-lg">
-                                @foreach ($userInvitedList as $item)
-                                    <li
-                                        class="flex justify-between items-center border-1 border-slate-600 p-2 rounded-lg">
-                                        <span>
-                                            {{ $item->user->email }}
-                                        </span>
-                                        <span class="text-yellow-400 bg-slate-600 p-2 rounded-lg">
-                                            @if ($item->role_id === 1)
-                                                Owner
-                                            @else
-                                                {{ ucfirst(optional($roles->where('id', $item->role_id)->first())->name ?? '_') }}
-                                            @endif
-                                        </span>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @endif
-                    </div>
+                    <h3 class="font-[Oswald] text-2xl font-bold">Team List</h3>
+                    @if ($teamList->isEmpty())
+                        <div class="p-4 my-4 text-sm text-yellow-800 rounded-lg bg-yellow-100 dark:bg-gray-700 dark:text-yellow-300"
+                            role="alert">
+                            <span class="font-bold">There is no any Team in this workspace!</span>
+                            <span class="font-normal">You can create new Team in your workspace with Team creator
+                                form.</span>
+                        </div>
+                    @else
+                        <ul class="bg-gradient-to-br from-slate-950 to-slate-800 p-4 mt-4 rounded-lg">
+                            @foreach ($teamList as $item)
+                                <li class="flex justify-between items-center border-1 border-slate-600 p-2 rounded-lg">
+                                    <span>
+                                        {{ $item->name }}
+                                    </span>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
                 </div>
             </div>
         </section>

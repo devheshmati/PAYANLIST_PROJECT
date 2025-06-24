@@ -10,7 +10,7 @@
         <section class="mt-4">
             <div class="">
                 <div class="bg-slate-800 rounded-lg p-4 w-[90%] mx-auto">
-                    <h3 class='text-2xl font-bold font-[Oswald]'>List</h3>
+                    <h3 class='text-2xl font-bold font-[Oswald]'>Created Workspace List</h3>
                     @if ($workspaces->isEmpty())
                         <div class="p-4 my-4 text-sm text-yellow-800 rounded-lg bg-yellow-100 dark:bg-gray-700 dark:text-yellow-300"
                             role="alert">
@@ -24,15 +24,21 @@
                                 <li>
                                     <a href="{{ route('workspaces.show', $item->id) }}"
                                         class="flex flex-col bg-slate-600 p-4 rounded-lg hover:shadow-[-1px_-1px_10px] hover:shadow-slate-200">
-                                        <h3 class="text-lg">{{ $item->name }}</h3>
-                                        <div class="text-sm text-slate-400 flex flex-col gap-4">
+                                        <div class="text-sm text-slate-400 flex flex-col gap-2">
+                                            <div>
+                                                <h3 class="text-lg">{{ $item->name }}</h3>
+                                            </div>
+                                            <div>
+                                                <span>Owner:</span>
+                                                <span>{{ $item->creator->email }}</span>
+                                            </div>
                                             <div>
                                                 <span>Members:</span>
                                                 <span>{{ $item->users->count() }}</span>
                                             </div>
                                             <div>
                                                 <span>Team</span>
-                                                <span>4</span>
+                                                <span>{{ $item->teams->count() }}</span>
                                             </div>
                                             <div class="flex gap-4 justify-between text-xs">
                                                 <span

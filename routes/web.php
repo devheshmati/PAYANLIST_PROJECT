@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\WorkspaceController;
 use App\Http\Controllers\WorkspaceInvitationController;
 use Illuminate\Support\Facades\Auth;
@@ -51,6 +52,7 @@ Route::middleware(['auth'])->prefix('user')->group(function () {
         // get last workspace opend by user
         $maxRecentCount = 3;
         $recentWorkspaces = $user->workspaces()
+            ->with('creator')
             ->withPivot('last_opened_at')
             ->orderByDesc('user_workspace_roles.last_opened_at')
             ->take($maxRecentCount)
@@ -86,4 +88,7 @@ Route::middleware(['auth'])->prefix('user')->group(function () {
     // workspace invitation
     Route::post('workspaces/{workspace}/invite', [WorkspaceInvitationController::class, 'invite'])
         ->name('user.workspace.invite');
+
+    // team creation
+    Route::resource('workspaces.teams', TeamController::class)->only(['store']);
 });

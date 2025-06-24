@@ -33,4 +33,9 @@ class Workspace extends Model
     {
         return $this->hasMany(UserWorkspaceRole::class);
     }
+
+    public function teams(): HasMany
+    {
+        return $this->hasMany(Team::class);
+    }
 }

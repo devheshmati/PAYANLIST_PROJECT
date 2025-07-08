@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -13,7 +14,9 @@ use Laravel\Sanctum\PersonalAccessToken;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
+    /**
+ * @use HasFactory<\Database\Factories\UserFactory>
+*/
     use HasFactory, Notifiable, HasApiTokens, CanResetPassword;
 
     /**
@@ -53,6 +56,11 @@ class User extends Authenticatable
     public function tokens()
     {
         return $this->morphMany(PersonalAccessToken::class, 'tokenable');
+    }
+
+    public function detail(): HasOne
+    {
+        return $this->hasOne(UserDetail::class);
     }
 
     public function createdWorkspaces(): HasMany

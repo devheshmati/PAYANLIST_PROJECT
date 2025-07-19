@@ -24,18 +24,18 @@
                     <h3 class="sidebar-title transition-all hidden whitespace-nowrap">Profile</h3>
                 </a>
             </li>
-            <li class="sidebar-item">
-                <a href="{{ route('user.reports') }}" class="flex gap-1 p-4 hover:bg-purple-800 hover:text-white">
-                    <i title="Reports" class="fa-solid fa-newspaper"></i>
-                    <h3 class="sidebar-title transition-all hidden whitespace-nowrap">Reports</h3>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="{{ route('user.settings') }}" class="flex gap-1 p-4 hover:bg-purple-800 hover:text-white">
-                    <i title="Settings" class="fa-solid fa-screwdriver-wrench"></i>
-                    <h3 class="sidebar-title transition-all hidden whitespace-nowrap">Settings</h3>
-                </a>
-            </li>
+            <!-- <li class="sidebar-item"> -->
+            <!--     <a href="" class="flex gap-1 p-4 hover:bg-purple-800 hover:text-white"> -->
+            <!--         <i title="Reports" class="fa-solid fa-newspaper"></i> -->
+            <!--         <h3 class="sidebar-title transition-all hidden whitespace-nowrap">Reports</h3> -->
+            <!--     </a> -->
+            <!-- </li> -->
+            <!-- <li class="sidebar-item"> -->
+            <!--     <a href="" class="flex gap-1 p-4 hover:bg-purple-800 hover:text-white"> -->
+            <!--         <i title="Settings" class="fa-solid fa-screwdriver-wrench"></i> -->
+            <!--         <h3 class="sidebar-title transition-all hidden whitespace-nowrap">Settings</h3> -->
+            <!--     </a> -->
+            <!-- </li> -->
         </ul>
         <ul class="sidebar-list flex flex-col justify-center items-center transition-all overflow-x-hidden mt-4">
             <li class="sidebar-item">

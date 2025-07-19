@@ -21,7 +21,6 @@ return new class extends Migration
                 $table->date('birth_date')->nullable();
                 $table->string('job_title')->nullable();
                 $table->text('description')->nullable();
-                $table->string('phone_number')->unique()->nullable();
                 $table->json('skills')->nullable();
                 $table->string('profile_image')->nullable();
                 $table->timestamps();

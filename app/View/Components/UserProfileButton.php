@@ -13,7 +13,6 @@ class UserProfileButton extends Component
      */
     public function __construct()
     {
-        //
     }
 
     /**

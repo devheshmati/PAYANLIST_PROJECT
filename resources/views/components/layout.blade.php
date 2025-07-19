@@ -7,6 +7,9 @@
     <title>{{ $title ?? 'Default Name' }}</title>
     <link rel="icon" href="/images/payanlist-logo-finish.svg">
 
+    <!-- csrf token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- Styles / Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

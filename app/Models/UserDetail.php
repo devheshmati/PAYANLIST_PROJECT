@@ -16,7 +16,6 @@ class UserDetail extends Model
         'skills',
         'profile_image',
         'job_title',
-        'phone_number',
     ];
 
     public function user(): BelongsTo

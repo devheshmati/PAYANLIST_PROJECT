@@ -11,16 +11,23 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__ . '/../routes/console.php',
         health: '/up',
     )
-    ->withMiddleware(function (Middleware $middleware) {
-        //
-        $middleware->validateCsrfTokens(except: [
-            'http://localhost:8000/auth/*',
-        ]);
-    })
-    ->withExceptions(function (Exceptions $exceptions) {
-        //
+    ->withMiddleware(
+        function (Middleware $middleware) {
+            $middleware->validateCsrfTokens(
+                except: [
+                'http://localhost:8000/auth/*',
+                ]
+            );
 
-    })
-    ->withEvents(discover: [
-        /*__DIR__ . '/../app/Domain/Orders/Listeners', // Define Path Finding Custom Listerers directory by Laravel*/])
+        }
+    )
+    ->withExceptions(
+        function (Exceptions $exceptions) {
+            //
+        }
+    )
+    ->withEvents(
+        discover: [
+        /*__DIR__ . '/../app/Domain/Orders/Listeners', // Define Path Finding Custom Listerers directory by Laravel*/]
+    )
     ->create();

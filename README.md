@@ -1,18 +1,26 @@
-# پروژه ی پایان لیست Payanlist
+# PayanList Project
 
-<div dir="rtl">
+PAYANLIST is a task management project built entirely with the Laravel framework, intentionally staying within the Laravel ecosystem. It uses Blade templates for the frontend, combined with a mix of vanilla JavaScript, a few lightweight JavaScript libraries, and TailwindCSS for styling.
 
-    این پروژه, در حال توسعه است!
-    وب اپلیکیشن payanlist برای همه ی افرادی که میخواهند روند توسعه ی پروژه ی خود را به صورت فردی و گروهی بهبود بخشند طراحی شده.
-    با وجود رابط کاربری ساده٫ امکاناتی گسترده و جامعی را در اختیار شما قرار میدهد از جمله این امکانات میتوان به انالیز رفتار کاربران٫ تعریف محیط های
-    مستقل از یکدیگر٫ دعوت کاربران و مدیریت انها٫ شخصی سازی٫ تعریف تیم ها٫ سیستم امتیاز دهی و پنل کاربران برخی از قابلیت های این وب اپلیکیشن میباشد.
+The application allows you to organize your work by creating separate environments and assigning multiple tasks to each. Although originally built as a personal practice project, don't let that fool you — PAYANLIST offers robust task management features that make it a practical and powerful tool for real-world.
 
-    بخش هایی از این پروژه به صورت متن باز ارائه شده تا توسعه دهندگان بتوانند آنها بهبود بخشند.
-    به طور کلی هدف این ما ایجاد یک وب اپلیکیشن فارسی زبان برای بهبود برآیند کاری افراد و گروه ها میباشد.
-    وب اپلیکیشن پایان لیست بعد از تکمیل فرایند های کارشناسی با امکانات اولیه به صورت دسترسی زودرس در دسترس عموم قرار خواهد گرفت!
-    در صورتی تمایل با انتقاد ها و پیشنهادات خودتان در آگاهی و بهبود تجربه ی کاربری ما را یاری کنید چراکه باعث خرسندی و افتخار ما خواهد بود.
-    شما میتونید از طریق ایمیل ذکر شده با ما در ارتباط باشید:
-    heshmatidev@gmail.com
-    
-    منتظر نظرات و انتقادات شما همراهان گرامی هستیم.
-</div>
+This project is currently open-source and available for exploration. There is also potential for it to evolve into a full SaaS platform in the future. Maybe i do that in the future --.(0_0).--
+
+### What You Can Do with EndList:
+
+- Sign up and log in securely
+- Create up to 5 personal or team workspaces
+- Add as many tasks as you need — stay on top of your to-dos
+- Enjoy a clean, distraction-free UI designed for focus
+
+### Images
+![Main page image.](https://github.com/devheshmati/laravel_project_01/blob/master/public/images/overview/Screenshot%202025-07-19%20at%2014-19-56%20Home%20Page.webp)
+![Dashboard.](https://github.com/devheshmati/laravel_project_01/blob/master/public/images/overview/Screenshot%202025-07-20%20at%2013-29-33%20User%20Panel%20Dashboard%20Page.webp)
+![User detail image.](https://github.com/devheshmati/laravel_project_01/blob/master/public/images/overview/Screenshot%202025-07-20%20at%2013-02-01%20User%20Panel%20Profile%20Page.webp)
+![Workspace and tasks environment image.](https://github.com/devheshmati/laravel_project_01/blob/master/public/images/overview/Screenshot%202025-07-20%20at%2013-29-16%20User%20Panel%20Daily%20Tasks%20Page.webp)
+
+### Final Words
+Feel free to explore EndList and let me know what you think. Seriously, don’t hold back — your feedback means a lot and can really help shape the future of this project.
+
+### Social
+https://www.linkedin.com/sharing/share-offsite/?url={https://www.linkedin.com/in/devheshmati/}

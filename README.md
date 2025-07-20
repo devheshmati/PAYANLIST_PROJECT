@@ -23,4 +23,4 @@ This project is currently open-source and available for exploration. There is al
 Feel free to explore EndList and let me know what you think. Seriously, don’t hold back — your feedback means a lot and can really help shape the future of this project.
 
 ### Social
-https://www.linkedin.com/sharing/share-offsite/?url={https://www.linkedin.com/in/devheshmati/}
+https://www.linkedin.com/in/devheshmati/

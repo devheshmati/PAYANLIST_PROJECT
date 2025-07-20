@@ -19,7 +19,7 @@
                         @foreach ($recentWorkspaces as $item)
                             @if ($item->pivot->last_opened_at)
                                 <li>
-                                    <a href="#"
+                                    <a href="{{ route('workspaces.show', $item->id) }}"
                                         class="flex flex-col cursor-pointer bg-slate-500 p-4 rounded-lg hover:shadow-[-1px_-1px_1rem] hover:shadow-slate-white">
                                         <h4 class="text-lg">{{ $item->name }}</h4>
                                         <div class="opacity-60 text-sm">

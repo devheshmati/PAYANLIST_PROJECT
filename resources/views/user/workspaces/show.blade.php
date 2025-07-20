@@ -56,10 +56,10 @@
                                             </span>
                                             <span class="flex justify-between gap-4 flex-1 text-lg">
                                                 <span>
-                                                    <a
-                                                        href="{{ route('workspaces.tasks.edit', ['workspace' => $workspace->id, 'task' => $item->id]) }}">
-                                                        <i class="fa-solid fa-pen-to-square"></i>
-                                                    </a>
+                                                    <button type="button">
+                                                        <i
+                                                            class="fa-solid fa-pen-to-square cursor-pointer text-slate-300 hover:text-slate-100"></i>
+                                                    </button>
                                                 </span>
                                                 <span>
                                                     <form
@@ -69,7 +69,8 @@
                                                         @csrf
                                                         @method('DELETE')
 
-                                                        <button type="submit">
+                                                        <button type="submit"
+                                                            class="cursor-pointer text-slate-300 hover:text-slate-100">
                                                             <i class="fa-solid fa-trash"></i>
                                                         </button>
                                                     </form>
@@ -124,10 +125,10 @@
                                             </span>
                                             <span class="flex justify-between gap-4 flex-1 text-lg">
                                                 <span>
-                                                    <a
-                                                        href="{{ route('workspaces.tasks.edit', ['workspace' => $workspace->id, 'task' => $item->id]) }}">
-                                                        <i class="fa-solid fa-pen-to-square"></i>
-                                                    </a>
+                                                    <button type="button">
+                                                        <i
+                                                            class="fa-solid fa-pen-to-square cursor-pointer text-slate-300 hover:text-slate-100"></i>
+                                                    </button>
                                                 </span>
                                                 <span>
                                                     <form
@@ -137,7 +138,8 @@
                                                         @csrf
                                                         @method('DELETE')
 
-                                                        <button type="submit">
+                                                        <button type="submit"
+                                                            class="cursor-pointer text-slate-300 hover:text-slate-100">
                                                             <i class="fa-solid fa-trash"></i>
                                                         </button>
                                                     </form>
@@ -192,10 +194,10 @@
                                             </span>
                                             <span class="flex justify-between gap-4 flex-1 text-lg">
                                                 <span>
-                                                    <a
-                                                        href="{{ route('workspaces.tasks.edit', ['workspace' => $workspace->id, 'task' => $item->id]) }}">
-                                                        <i class="fa-solid fa-pen-to-square"></i>
-                                                    </a>
+                                                    <button type="button">
+                                                        <i
+                                                            class="fa-solid fa-pen-to-square cursor-pointer text-slate-300 hover:text-slate-100"></i>
+                                                    </button>
                                                 </span>
                                                 <span>
                                                     <form
@@ -205,7 +207,8 @@
                                                         @csrf
                                                         @method('DELETE')
 
-                                                        <button type="submit">
+                                                        <button type="submit"
+                                                            class="cursor-pointer text-slate-300 hover:text-slate-100">
                                                             <i class="fa-solid fa-trash"></i>
                                                         </button>
                                                     </form>

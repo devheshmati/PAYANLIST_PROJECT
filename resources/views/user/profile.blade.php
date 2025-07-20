@@ -116,7 +116,7 @@
                                 @else
                                     <span class="text-red-400 text-lg">First or Last Name is undefined!?</span>
                                 @endif
-                            </span> <!--Full Name -->
+                            </span> <!-- Full Name -->
                         </div>
                         <div>
                             <span class="font-bold text-md text-slate-300 font-[Oswald]">
@@ -125,7 +125,7 @@
                                 @else
                                     <span class="text-red-400 text-lg">username is undefined!?</span>
                                 @endif
-                            </span> <!--Full Name -->
+                            </span> <!-- username -->
                         </div>
                     </div>
                     <div class="flex flex-col fit-content gap-1">
@@ -137,17 +137,7 @@
                                 @else
                                     <span class="text-red-400 text-lg"></span>Email is undefined!?
                                 @endif
-                            </span> <!--Full Name -->
-                        </div>
-                        <div>
-                            <span class="font-bold font-[Oswald]">Age: </span>
-                            <span class="font-bold text-xl font-[Oswald]">
-                                @if ($user->detail?->birth_date !== null)
-                                    {{ $user->detail->birth_date }}
-                                @else
-                                    <span class="text-red-400 text-lg">Birth Date is undefined!?</span>
-                                @endif
-                            </span> <!--Full Name -->
+                            </span> <!-- email -->
                         </div>
                     </div>
                     <div class="flex flex-col fit-content gap-1">
@@ -159,7 +149,7 @@
                                 @else
                                     <span class="text-red-400 text-lg">Job Title is undefined!?</span>
                                 @endif
-                            </span> <!--Full Name -->
+                            </span> <!-- job title -->
                         </div>
                         <div>
                             <span class="font-bold font-[Oswald]">Phone: </span>
@@ -169,7 +159,7 @@
                                 @else
                                     <span class="text-red-400 text-lg">Job Title is undefined!?</span>
                                 @endif
-                            </span> <!--Full Name -->
+                            </span> <!-- phone number -->
                         </div>
                     </div>
                 </div>
@@ -286,26 +276,6 @@
                                         class="active cursor-pointer">
                                         <i class="fa-solid fa-pen-to-square text-gray-400 text-xl"></i>
                                     </button>
-                                </div>
-                            </div>
-                            <div class="flex flex-col mt-4">
-                                @error('birth_date')
-                                    <div>
-                                        <p class="text-red-400">{{ $message }}</p>
-                                    </div>
-                                @enderror
-
-                                <label for="birth-date-input">Birth Date</label>
-                                <div>
-                                    <!-- birth date -->
-                                    <input id="birth-date-input" type="text" name="birth_date"
-                                        value="{{ $user->detail?->birth_date }}" placeholder="Birth date..."
-                                        class="border-1 border-slate-400 px-4 py-2 rounded-lg w-1/2">
-                                    <button id="birth-date-activator-btn" type="button"
-                                        class="active cursor-pointer">
-                                        <i class="fa-solid fa-pen-to-square text-gray-400 text-xl"></i>
-                                    </button>
-
                                 </div>
                             </div>
                             <div class="flex flex-col mt-4">

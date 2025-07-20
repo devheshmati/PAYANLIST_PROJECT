@@ -34,17 +34,21 @@ class WorkspaceController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $request->validate(
+            [
             'name' => [
                 'required',
                 'string',
                 'max:255',
-                Rule::unique('workspaces')->where(function ($query) use ($request) {
-                    return $query->where('created_by', $request->user()->id);
-                }),
+                Rule::unique('workspaces')->where(
+                    function ($query) use ($request) {
+                        return $query->where('created_by', $request->user()->id);
+                    }
+                ),
             ],
             'description' => 'nullable|string',
-        ]);
+            ]
+        );
 
         $user = $request->user();
         $userCreatedWorkspaces = $user->createdWorkspaces;
@@ -58,15 +62,19 @@ class WorkspaceController extends Controller
                 return redirect()->back()->with('alertMessage', 'Role "Owner" is missing. Please seed your roles table first.');
             }
 
-            $newWorkspace = Workspace::create([
+            $newWorkspace = Workspace::create(
+                [
                 'name' => $request->input('name'),
                 'description' => $request->input('description'),
                 'created_by' => Auth::id()
-            ]);
+                ]
+            );
 
-            $newWorkspace->users()->attach($user->id, [
+            $newWorkspace->users()->attach(
+                $user->id, [
                 'role_id' => $ownerRole->id, // if owner not exist set 1
-            ]);
+                ]
+            );
 
             return redirect()->back()->with('message', 'The new workspace is created!');
         } else {
@@ -96,17 +104,21 @@ class WorkspaceController extends Controller
 
         // last opened workspace handled
         if ($workspace->users->contains($user->id)) {
-            $workspace->users()->updateExistingPivot($user->id, [
+            $workspace->users()->updateExistingPivot(
+                $user->id, [
                 'last_opened_at' => now()
-            ]);
+                ]
+            );
         }
 
         return view('user.workspaces.show', compact('workspace', 'roles'))
-            ->with([
+            ->with(
+                [
                 'tasks' => $workspace->tasks,
                 'userInvitedList' => $workspace->userWorkspaceRoles,
                 'teamList' => $workspace->teams
-            ]);
+                ]
+            );
     }
 
     /**
@@ -130,6 +142,5 @@ class WorkspaceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
     }
 }

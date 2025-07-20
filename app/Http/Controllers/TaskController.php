@@ -22,7 +22,9 @@ class TaskController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create() {}
+    public function create()
+    {
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -30,21 +32,26 @@ class TaskController extends Controller
     public function store(Request $request, Workspace $workspace)
     {
         /*$workspace = Workspace::find($workspace_id);*/
-        $validator = $request->validate([
+        $validator = $request->validate(
+            [
             'title' => [
                 'required',
                 'string',
                 'max:255',
-                Rule::unique('tasks')->where(function ($query) use ($workspace) {
-                    return $query->where('workspace_id', $workspace->id);
-                })
+                Rule::unique('tasks')->where(
+                    function ($query) use ($workspace) {
+                        return $query->where('workspace_id', $workspace->id);
+                    }
+                )
             ],
             'description' => 'nullable|string',
             'priority' => 'required|string',
             'score' => "required|string",
-        ]);
+            ]
+        );
 
-        $newTask = Task::create([
+        $newTask = Task::create(
+            [
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'created_by' => Auth::id(),
@@ -52,7 +59,8 @@ class TaskController extends Controller
             'priority' => $request->input('priority'),
             'status' => 'todo',
             'score' => $request->input('score')
-        ]);
+            ]
+        );
 
         return redirect()->back()->with('message', 'New Task is create!');
     }
@@ -85,16 +93,28 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, Workspace $workspace, Task $task)
     {
-        return "Delete Task id: $id";
+        if($task->workspace_id !== $workspace->id) {
+            abort(403, "This task not belong to this workspace");
+        }
+
+        if($workspace->created_by !== $request->user()->id) {
+            abort(403, "Unauthorized action.");
+        }
+
+        $task->delete();
+
+        return back()->with('message', "Task deleted successfully!");
     }
 
     public function updateStatus(Request $request, Workspace $workspace, Task $task)
     {
-        $request->validate([
+        $request->validate(
+            [
             'status' => 'required|in:todo,in_progress,done'
-        ]);
+            ]
+        );
 
         if ($task->workspace_id !== $workspace->id) {
             abort(403, 'Unauthorized action.');

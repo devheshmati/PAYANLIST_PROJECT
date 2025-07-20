@@ -11,7 +11,7 @@
 
         <section class="bg-slate-900 py-10">
             @if (session('message'))
-                <span class="bg-lime-600 py-2 px-2 ps-8 rounded-tr-lg">New task is created!</span>
+                <span class="bg-lime-600 py-2 px-2 ps-8 rounded-tr-lg">{{ session('message') }}</span>
             @endif
             <div class="flex p-4 justify-around">
                 <div class='flex flex-col w-100 h-100 bg-[rgba(100,100,150,0.2)] p-2'>
@@ -63,7 +63,7 @@
                                                 </span>
                                                 <span>
                                                     <form
-                                                        action="{{ route('workspaces.tasks.destroy', ['workspace' => $workspace->id, 'task' => $item->id]) }}"
+                                                        action="{{ route('workspaces.tasks.destroy', ['workspace' => $workspace, 'task' => $item]) }}"
                                                         method="POST">
 
                                                         @csrf
@@ -132,7 +132,7 @@
                                                 </span>
                                                 <span>
                                                     <form
-                                                        action="{{ route('workspaces.tasks.destroy', ['workspace' => $workspace->id, 'task' => $item->id]) }}"
+                                                        action="{{ route('workspaces.tasks.destroy', ['workspace' => $workspace, 'task' => $item]) }}"
                                                         method="POST">
 
                                                         @csrf
@@ -201,7 +201,7 @@
                                                 </span>
                                                 <span>
                                                     <form
-                                                        action="{{ route('workspaces.tasks.destroy', ['workspace' => $workspace->id, 'task' => $item->id]) }}"
+                                                        action="{{ route('workspaces.tasks.destroy', ['workspace' => $workspace, 'task' => $item]) }}"
                                                         method="POST">
 
                                                         @csrf

@@ -2,7 +2,7 @@
     <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800 w-full">
         <div class=" grid grid-cols-3 mx-auto">
             <div class="flex justify-start items-center">
-                <a href="https://payanlist.ir" class="flex items-center justify-center gap-1">
+                <a href="{{ route('home') }}" class="flex items-center justify-center gap-1">
                     <img src="/images/payanlist-logo-finish.svg" class="w-[20px] h-[20px]" alt="Payanlist Logo">
                     <span
                         class="self-center text-xl font-semibold whitespace-nowrap dark:text-white mb-[-4px]">PAYANLIST</span>

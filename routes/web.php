@@ -113,8 +113,6 @@ Route::middleware(['auth'])->prefix('user')->group(
         // task
         Route::resource('workspaces.tasks', TaskController::class);
         Route::post('workspaces/{workspace}/tasks/{task}/update-status', [TaskController::class, 'updateStatus'])->name('workspaces.tasks.updateStatus');
-        Route::delete('workspaces/{workspace}/tasks/{task}/destroy', [TaskController::class, "destroy"]);
-        Route::put('workspaces/{workspace}/tasks/{task}/update', [TaskController::class, "update"]);
 
         // workspace invitation
         Route::post('workspaces/{workspace}/invite', [WorkspaceInvitationController::class, 'invite'])

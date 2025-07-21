@@ -77,17 +77,35 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Workspace $workspace, Task $task)
     {
-        return "This is edit task id: $id";
+        return view('user.tasks.edit', ['workspace' => $workspace, 'task' => $task]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Workspace $workspace, Task $task)
     {
-        return "This is update with id: $id";
+        if($task->workspace->id !== $workspace->id) {
+            abort(403, "Not match Workspace!");
+        }
+
+        if($request->user()->id !== $workspace->created_by) {
+            abort(403, "Unauthorized!");
+        }
+
+        $validator = $request->validate(
+            [
+            'title' => 'string|max:255',
+            'description' => 'nullable|string|max:1000'
+            ]
+        );
+
+
+        $task->update($validator);
+
+        return back()->with('success', "Task is updated");
     }
 
     /**

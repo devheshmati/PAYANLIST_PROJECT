@@ -13,6 +13,9 @@
             @if (session('message'))
                 <span class="bg-lime-600 py-2 px-2 ps-8 rounded-tr-lg">{{ session('message') }}</span>
             @endif
+            @if (session('success'))
+                <span class="bg-lime-600 py-2 px-2 ps-8 rounded-tr-lg">{{ session('success') }}</span>
+            @endif
             <div class="flex p-4 justify-around">
                 <div class='flex flex-col w-100 h-100 bg-[rgba(100,100,150,0.2)] p-2'>
                     <h3 class="opacity-60 font-[Oswald] text-lg">Todo List</h3>
@@ -56,10 +59,11 @@
                                             </span>
                                             <span class="flex justify-between gap-4 flex-1 text-lg">
                                                 <span>
-                                                    <button type="button">
+                                                    <a href="{{ route('workspaces.tasks.edit', ['workspace' => $workspace, 'task' => $item]) }}"
+                                                        type="button">
                                                         <i
                                                             class="fa-solid fa-pen-to-square cursor-pointer text-slate-300 hover:text-slate-100"></i>
-                                                    </button>
+                                                    </a>
                                                 </span>
                                                 <span>
                                                     <form
@@ -125,10 +129,11 @@
                                             </span>
                                             <span class="flex justify-between gap-4 flex-1 text-lg">
                                                 <span>
-                                                    <button type="button">
+                                                    <a href="{{ route('workspaces.tasks.edit', ['workspace' => $workspace, 'task' => $item]) }}"
+                                                        type="button">
                                                         <i
                                                             class="fa-solid fa-pen-to-square cursor-pointer text-slate-300 hover:text-slate-100"></i>
-                                                    </button>
+                                                    </a>
                                                 </span>
                                                 <span>
                                                     <form
@@ -194,10 +199,11 @@
                                             </span>
                                             <span class="flex justify-between gap-4 flex-1 text-lg">
                                                 <span>
-                                                    <button type="button">
+                                                    <a href="{{ route('workspaces.tasks.edit', ['workspace' => $workspace, 'task' => $item]) }}"
+                                                        type="button">
                                                         <i
                                                             class="fa-solid fa-pen-to-square cursor-pointer text-slate-300 hover:text-slate-100"></i>
-                                                    </button>
+                                                    </a>
                                                 </span>
                                                 <span>
                                                     <form

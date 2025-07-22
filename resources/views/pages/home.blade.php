@@ -698,6 +698,6 @@
         </section>
 
         <script type='module' src="/js/charts.js" defer></script>
+        <x-footer />
     </x-main>
-    <x-footer />
 </x-layout>

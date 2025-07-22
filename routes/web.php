@@ -6,15 +6,32 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\WorkspaceController;
 use App\Http\Controllers\WorkspaceInvitationController;
 use App\Http\Controllers\UserDetailController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
+// pages
+// Home
 Route::get(
     '/', function (Request $request) {
         return view("pages.home");
     }
 )->name('home');
+
+// Feature
+Route::get(
+    '/feature', function (Request $request) {
+        return view("pages.feature");
+    }
+)->name('feature');
+
+// contact
+// Show Contact Us Page
+Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
+
+// Handle Form Submission
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 Route::prefix('/auth')->group(
     function () {

@@ -13,6 +13,12 @@
         </button>
         <ul class="sidebar-list flex flex-col justify-center items-center transition-all overflow-x-hidden pt-20">
             <li class="sidebar-item">
+                <a href="{{ route('home') }}" class="flex gap-1 p-4 hover:bg-purple-800 hover:text-white">
+                    <i title="Home" class="fa-solid fa-home"></i>
+                    <h3 class="sidebar-title transition-all hidden whitespace-nowrap">Home</h3>
+                </a>
+            </li>
+            <li class="sidebar-item">
                 <a href="{{ route('user.dashboard') }}" class="flex gap-1 p-4 hover:bg-purple-800 hover:text-white">
                     <i title="Dashboard" class="fa-solid fa-gauge"></i>
                     <h3 class="sidebar-title transition-all hidden whitespace-nowrap">Dashboard</h3>

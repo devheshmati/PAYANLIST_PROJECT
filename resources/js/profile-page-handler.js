@@ -5,7 +5,6 @@ const skillList = window.skillListFromServer || [];
 // get All main input activator
 const firstNameActivator = document.querySelector("#first-name-activator-btn");
 const lastNameActivator = document.querySelector("#last-name-activator-btn");
-const birthDateActivator = document.querySelector("#birth-date-activator-btn");
 const jobTitleActivator = document.querySelector("#job-title-activator-btn");
 const usernameActivator = document.querySelector("#username-activator-btn");
 const descriptionActivator = document.querySelector(
@@ -16,7 +15,6 @@ const skillActivator = document.querySelector("#skill-activator-btn");
 // get all main inputs
 const firstNameInput = document.querySelector("#first-name-input");
 const lastNameInput = document.querySelector("#last-name-input");
-const birthDateInput = document.querySelector("#birth-date-input");
 const jobTitleInput = document.querySelector("#job-title-input");
 const usernameInput = document.querySelector("#username-input");
 const descriptionInput = document.querySelector("#description-input");
@@ -34,10 +32,6 @@ if (firstNameActivator) {
 
 if (lastNameActivator) {
     allActivatorButtons.push(lastNameActivator);
-}
-
-if (birthDateActivator) {
-    allActivatorButtons.push(birthDateActivator);
 }
 
 if (jobTitleActivator) {
@@ -63,10 +57,6 @@ if (firstNameInput) {
 
 if (lastNameInput) {
     allInputs.push(lastNameInput);
-}
-
-if (birthDateInput) {
-    allInputs.push(birthDateInput);
 }
 
 if (jobTitleInput) {
@@ -116,7 +106,7 @@ function inputUnlocker() {
         activatorBtn.disabled = true;
     }
 
-    // birth date handler
+    // job title handler
     if (activatorBtn === allActivatorButtons[2]) {
         // remove disabled attribute for input
         allInputs[2].removeAttribute("disabled");
@@ -126,7 +116,7 @@ function inputUnlocker() {
         activatorBtn.disabled = true;
     }
 
-    // job title handler
+    // username handler
     if (activatorBtn === allActivatorButtons[3]) {
         // remove disabled attribute for input
         allInputs[3].removeAttribute("disabled");
@@ -136,18 +126,8 @@ function inputUnlocker() {
         activatorBtn.disabled = true;
     }
 
-    // username handler
-    if (activatorBtn === allActivatorButtons[4]) {
-        // remove disabled attribute for input
-        allInputs[4].removeAttribute("disabled");
-        // remove active class for activator btn
-        activatorBtn.classList.remove("active");
-        activatorBtn.classList.remove("cursor-pointer");
-        activatorBtn.disabled = true;
-    }
-
     // description handler
-    if (activatorBtn === allActivatorButtons[5]) {
+    if (activatorBtn === allActivatorButtons[4]) {
         const descriptionSaveButton = document.querySelector(
             "#description-form-save-button",
         );
@@ -156,19 +136,19 @@ function inputUnlocker() {
         activatorBtn.classList.add("hidden");
 
         // undisabled the inputs
-        allInputs[5].disabled = false;
+        allInputs[4].disabled = false;
 
         // remove hidden class to description form save button
         descriptionSaveButton.classList.remove("hidden");
 
         // focus on input and chane color of text
 
-        allInputs[5].classList.add("text-slate-100");
-        allInputs[5].focus();
+        allInputs[4].classList.add("text-slate-100");
+        allInputs[4].focus();
     }
 
     // skill handler
-    if (activatorBtn === allActivatorButtons[6]) {
+    if (activatorBtn === allActivatorButtons[5]) {
         const modal = document.querySelector("#skill-modal"); // get model element
         modal.classList.remove("hidden");
     }
@@ -189,7 +169,7 @@ allInputs.forEach((element) => {
 });
 
 // skill modal
-const closeSkillModalBtn = document.querySelector("#close-skill-modal-btn");
+const closeSkillModalBtn = document.querySelector("#skill-modal-close-button");
 const skillSelectionAddBtn = document.querySelector(
     "#skill-selection-add-button",
 );
@@ -204,9 +184,9 @@ closeSkillModalBtn.addEventListener("click", closeSkillModal);
 // modal save action
 modalSaveBtn.addEventListener("click", modalSaveHandler);
 
-function closeSkillModal() {
+function closeSkillModal(e) {
     // get parent modal
-    const modal = this.closest(".modal");
+    const modal = e.target.closest(".modal");
 
     // now close modal with adding hidden class to hide modal
     modal.classList.add("hidden");

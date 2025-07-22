@@ -69,7 +69,7 @@
                 <button type="Add" id="skill-selection-add-button"
                     class="px-4 py-2 rounded-lg bg-purple-600 h-fit">Add</button>
             </div>
-            <button id="close-skill-modal-btn" type="button"
+            <button id="skill-modal-close-button" type="button"
                 class="absolute right-5 top-5 hover:text-red-400 cursor-pointer">
                 <i class="fa-solid fa-rectangle-xmark text-3xl"></i>
             </button>

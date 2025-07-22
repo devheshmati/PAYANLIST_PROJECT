@@ -37,6 +37,9 @@
 <x-layout title="Home Page">
     <x-header />
     <x-main>
+        @if (session('success'))
+            <span class="bg-lime-600 py-2 px-2 ps-8 rounded-tr-lg">{{ session('success') }}</span>
+        @endif
 
         {{-- Section 01 --}}
         <section>

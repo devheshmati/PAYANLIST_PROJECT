@@ -65,6 +65,9 @@
                     <option value="backend">BackEnd</option>
                     <option value="fullstack">FullStack</option>
                     <option value="devops">DevOps</option>
+                    <option value="self-manager">Self Manager</option>
+                    <option value="c#">C#</option>
+                    <option value="c++">C++</option>
                 </select>
                 <button type="Add" id="skill-selection-add-button"
                     class="px-4 py-2 rounded-lg bg-purple-600 h-fit">Add</button>
@@ -174,7 +177,8 @@
                         @method('PUT')
                         <div class="flex items-center justify-between">
                             <h3 class="text-slate-100 font-bold font-[Oswald] tracking-wide text-xl">About Me</h3>
-                            <button id="description-activator-btn" type="button" class="cursor-pointer">
+                            <button id="description-activator-btn" type="button"
+                                class="activator-btn cursor-pointer">
                                 <i class="fa-solid fa-pen-to-square text-gray-100 text-xl"></i>
                             </button>
                             <button id="description-form-save-button" type="submit"
@@ -196,7 +200,7 @@
                     @method('PUT')
                     <div class="flex items-center justify-between">
                         <h3 class="text-slate-100 font-bold font-[Oswald] tracking-wide text-xl">Skills</h3>
-                        <button id="skill-activator-btn" type="button" class="cursor-pointer">
+                        <button id="skill-activator-btn" type="button" class="activator-btn cursor-pointer">
                             <i class="fa-solid fa-pen-to-square text-gray-100 text-xl"></i>
                         </button>
                     </div>
@@ -237,7 +241,7 @@
                                         value="{{ $user->detail?->first_name }}" placeholder="First name..."
                                         class="border-1 border-slate-400 px-4 py-2 rounded-lg w-1/2">
                                     <button id="first-name-activator-btn" type="button"
-                                        class="active cursor-pointer">
+                                        class="active cursor-pointer activator-btn">
                                         <i class="fa-solid fa-pen-to-square text-gray-400 text-xl"></i>
                                     </button>
                                 </div>
@@ -255,7 +259,7 @@
                                         value="{{ $user->detail?->last_name }}" placeholder="Last name..."
                                         class="border-1 border-slate-400 px-4 py-2 rounded-lg w-1/2">
                                     <button id="last-name-activator-btn" type="button"
-                                        class="active cursor-pointer">
+                                        class="active cursor-pointer activator-btn">
                                         <i class="fa-solid fa-pen-to-square text-gray-400 text-xl"></i>
                                     </button>
                                 </div>
@@ -273,7 +277,7 @@
                                         value="{{ $user->detail?->job_title }}" placeholder="Job title..."
                                         class="border-1 border-slate-400 px-4 py-2 rounded-lg w-1/2">
                                     <button id="job-title-activator-btn" type="button"
-                                        class="active cursor-pointer">
+                                        class="active cursor-pointer activator-btn">
                                         <i class="fa-solid fa-pen-to-square text-gray-400 text-xl"></i>
                                     </button>
                                 </div>
@@ -291,7 +295,8 @@
                                     <input id="username-input" type="text" name="username"
                                         value="{{ $user->detail?->username }}" placeholder="username ..."
                                         class="border-1 border-slate-400 px-4 py-2 rounded-lg w-1/2">
-                                    <button id="username-activator-btn" type="button" class="active cursor-pointer">
+                                    <button id="username-activator-btn" type="button"
+                                        class="active cursor-pointer activator-btn">
                                         <i class="fa-solid fa-pen-to-square text-gray-400 text-xl"></i>
                                     </button>
 

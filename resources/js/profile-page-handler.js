@@ -1,5 +1,12 @@
 // general variable
-const skillList = window.skillListFromServer || [];
+let skillList = [];
+let skillListFromServer = window.skillListFromServer;
+
+if (skillListFromServer !== null || skillListFromServer !== "undefined") {
+    skillList = window.skillListFromServer;
+} else {
+    skillList = [];
+}
 
 // main form section
 // get All main input activator
@@ -82,7 +89,7 @@ allActivatorButtons.forEach((element) => {
 });
 
 // input unlocer function
-function inputUnlocker() {
+function inputUnlocker(e) {
     // get clicked element by this
     let activatorBtn = this;
 
@@ -142,7 +149,6 @@ function inputUnlocker() {
         descriptionSaveButton.classList.remove("hidden");
 
         // focus on input and chane color of text
-
         allInputs[4].classList.add("text-slate-100");
         allInputs[4].focus();
     }
@@ -178,12 +184,13 @@ const modalSaveBtn = document.querySelector("#modal-skill-save-button");
 // add change listerner for handling skill selection
 skillSelectionAddBtn.addEventListener("click", skillSelectionHandler);
 
-// close modal
-closeSkillModalBtn.addEventListener("click", closeSkillModal);
-
 // modal save action
 modalSaveBtn.addEventListener("click", modalSaveHandler);
 
+// close modal
+closeSkillModalBtn.addEventListener("click", closeSkillModal);
+
+// close modal
 function closeSkillModal(e) {
     // get parent modal
     const modal = e.target.closest(".modal");
@@ -192,36 +199,13 @@ function closeSkillModal(e) {
     modal.classList.add("hidden");
 }
 
+// skill selection input handler
 function skillSelectionHandler() {
-    const skillSelector = document.querySelector("#skill-selection");
-
-    // we need to add this value to the skill list array
-    if (!skillList.includes(skillSelector.value)) {
-        const modalSkillListELement =
-            document.querySelector("#modal-skill-list");
-        skillList.push(skillSelector.value);
-        modalSkillListELement.innerHTML = "";
-        skillList.forEach((skill) => {
-            const listItem = document.createElement("li");
-            listItem.textContent = skill;
-            listItem.classList.add(
-                "px-4",
-                "py-2",
-                "flex",
-                "justify-center",
-                "items-center",
-                "bg-cyan-600",
-                "rounded-lg",
-                "font-bold",
-                "text-sm",
-            );
-            modalSkillListELement.appendChild(listItem);
-        });
-    } else {
-        console.log("The value selected before");
-    }
+    const modalSkilllist = document.querySelector("#modal-skill-list");
+    createSkillList("modal-list", skillList, modalSkilllist);
 }
 
+// inja boodam
 function modalSaveHandler() {
     const csrfToken = document
         .querySelector('meta[name="csrf-token"]')
@@ -254,24 +238,98 @@ function modalSaveHandler() {
 
 document.addEventListener("DOMContentLoaded", () => {
     const modalSkillListELement = document.querySelector("#modal-skill-list");
-    modalSkillListELement.innerHTML = "";
-    skillList.forEach((skill) => {
-        const listItem = document.createElement("li");
-        listItem.textContent = skill;
-        listItem.classList.add(
-            "px-4",
-            "py-2",
-            "flex",
-            "justify-center",
-            "items-center",
-            "bg-cyan-600",
-            "rounded-lg",
-            "font-bold",
-            "text-sm",
-        );
-        modalSkillListELement.appendChild(listItem);
-    });
+    createSkillList("modal-list", skillList, modalSkillListELement);
 });
+
+function createSkillList(type, skillArray, targetListElement) {
+    if (targetListElement) {
+        targetListElement.innerHTML = "";
+    } else {
+        console.log("Add Element as a list");
+        return;
+    }
+
+    if (skillArray === null || skillArray === "undefined") {
+        console.log("Skill list is undefined or null!");
+        return;
+    }
+
+    if (!type) {
+        console.log("Please define type of list");
+        return;
+    }
+
+    if (type === "modal-list") {
+        targetListElement.innerHTML = "";
+        const skillSelector = document.querySelector("#skill-selection");
+        // check the selection input
+        if (!skillSelector) {
+            console.log("you need to add or create an select input");
+        }
+
+        if (!skillArray.includes(skillSelector.value)) {
+            skillArray.push(skillSelector.value);
+        }
+
+        createList();
+    }
+
+    if (type === "base-list") {
+        createList();
+    }
+
+    function createList() {
+        skillArray.forEach((skill) => {
+            const listItem = document.createElement("li");
+            listItem.textContent = skill;
+            listItem.classList.add(
+                "p-2",
+                "flex",
+                "justify-between",
+                "items-center",
+                "gap-1",
+                "bg-cyan-600",
+                "rounded-lg",
+                "font-bold",
+                "text-sm",
+            );
+
+            if (type === "modal-list") {
+                const deleteButton = document.createElement("button");
+                deleteButton.innerHTML =
+                    "<i class='fa-solid fa-rectangle-xmark text-white hover:text-red-400 transition duration-200 text-lg'></i>";
+                deleteButton.classList.add(
+                    "modal-skill-button",
+                    "flex",
+                    "justify-center",
+                    "items-center",
+                );
+                deleteButton.id = "skill-" + skill;
+                listItem.appendChild(deleteButton);
+                listItem.addEventListener("click", handleDeleteSkillItem);
+            }
+
+            targetListElement.appendChild(listItem);
+        });
+    }
+}
+
+// handle delete skill item from modal list
+function handleDeleteSkillItem(e) {
+    const currButton = e.target.closest("button.modal-skill-button");
+    if (currButton) {
+        const currValue = currButton.id.split("skill-")[1];
+        const modal = e.target.closest("#modal-skill-list");
+
+        const newArr = skillList.filter((item) => {
+            return item !== currValue;
+        });
+
+        skillList = newArr;
+
+        createSkillList("modal-list", skillList, modal);
+    }
+}
 
 // avatar handler
 const avatarBtn = document.querySelector("#avatar");

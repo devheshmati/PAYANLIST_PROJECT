@@ -125,11 +125,11 @@ Route::middleware(['auth'])->prefix('user')->group(
         // )->name('user.reports');
 
         // workspace
-        // Route::resource('workspaces', WorkspaceController::class);
-        Route::get('workspaces', [WorkspaceController::class, 'index'])->name('workspaces.index');
-        Route::get('workspaces/create', [WorkspaceController::class, 'create'])->name('workspaces.create');
-        Route::post('workspaces/store', [WorkspaceController::class, 'store'])->name('workspaces.store');
-        Route::get('workspaces/{workspace}', [WorkspaceController::class, 'show'])->name('workspaces.show');
+        Route::resource('workspaces', WorkspaceController::class);
+        // Route::get('workspaces', [WorkspaceController::class, 'index'])->name('workspaces.index');
+        // Route::get('workspaces/create', [WorkspaceController::class, 'create'])->name('workspaces.create');
+        // Route::post('workspaces/store', [WorkspaceController::class, 'store'])->name('workspaces.store');
+        // Route::get('workspaces/{workspace}', [WorkspaceController::class, 'show'])->name('workspaces.show');
 
         // task
         Route::resource('workspaces.tasks', TaskController::class);

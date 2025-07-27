@@ -1,4 +1,4 @@
-# PayanList Project
+# PayanList Project v1.0.0-beta
 
 PAYANLIST is a task management project built entirely with the Laravel framework, intentionally staying within the Laravel ecosystem. It uses Blade templates for the frontend, combined with a mix of vanilla JavaScript, a few lightweight JavaScript libraries, and TailwindCSS for styling.
 

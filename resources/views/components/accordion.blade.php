@@ -25,6 +25,4 @@
             </li>
         @endforeach
     </ul>
-
-    @vite('resources/js/accordion.js')
 </div>

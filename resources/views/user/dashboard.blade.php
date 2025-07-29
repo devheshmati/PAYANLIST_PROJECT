@@ -15,7 +15,8 @@
                 </h3>
 
                 @if ($recentWorkspaces->isNotEmpty())
-                    <ul class="flex gap-2 mx-auto w-[90%]">
+                    <ul
+                        class="gird grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 mx-auto w-[90%] justify-between items-center">
                         @foreach ($recentWorkspaces as $item)
                             @if ($item->pivot->last_opened_at)
                                 <li>
@@ -46,16 +47,16 @@
                     About Tasks
                 </h3>
 
-                <div class="flex justify-between bg-slate-500 px-10 py-4 mx-auto w-[90%]">
-                    <div class="text-slate-300">
+                <div class="grid grid-cols-12 bg-slate-500 px-10 py-4 mx-auto w-[90%] gap-4">
+                    <div class="text-slate-300 col-span-12 sm:col-span-4 flex flex-col justify-between">
                         <h6 class="font-bold font-[Oswald]">Total Todo Task</h6>
                         <p class="font-bold font-[Oswald] text-3xl">{{ $allTodoTasksCount }}</p>
                     </div>
-                    <div class="text-orange-300">
+                    <div class="text-orange-300 col-span-12 sm:col-span-4 flex flex-col justify-between">
                         <h6 class="font-bold font-[Oswald]">Total In Progress Task</h6>
                         <p class="font-bold font-[Oswald] text-3xl">{{ $allInProgressTasksCount }}</p>
                     </div>
-                    <div class="text-lime-300">
+                    <div class="text-lime-300 col-span-12 sm:col-span-4 flex flex-col justify-between">
                         <h6 class="font-bold font-[Oswald]">Total Done Task</h6>
                         <p class="font-bold font-[Oswald] text-3xl">{{ $allDoneTasksCount }}</p>
                     </div>

@@ -7,7 +7,8 @@
         <img src="{{ $user?->detail?->profile_image
             ? asset('storage/' . $user->detail->profile_image)
             : asset('/images/profiles/nobody-avatar.webp') }}"
-            alt="Kavhe Profile image" class="w-[40px] h-[40px] rounded-full cursor-pointer object-cover">
+            alt="Kavhe Profile image"
+            class="w-[30px] h-[30px] sm:w-[40px] sm:h-[40px] rounded-full cursor-pointer object-cover">
     </button>
 
     <div class="user-profile-dropdown absolute right-0 top-18 h-fit z-10 hidden">

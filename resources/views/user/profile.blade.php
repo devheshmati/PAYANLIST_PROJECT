@@ -4,7 +4,7 @@
     <div id="avatar-modal"
         class="modal fixed w-full h-full z-10 flex flex-col bg-[rgba(0,0,0,0.7)] justify-center items-center hidden">
 
-        <div class="text-slate-100 bg-slate-800 rounded-lg relative w-[700px] h-[500px]">
+        <div class="text-slate-100 bg-slate-800 rounded-lg relative w-[90%] h-1/2 md:w-[700px] md:h-[500px]">
             <form action="{{ route('user.profile.avatarUpdate') }}" method="POST" enctype="multipart/form-data"
                 class="w-full h-full flex flex-col items-center justify-center gap-4">
 
@@ -16,13 +16,14 @@
                 <img src="{{ $user->detail?->profile_image
                     ? asset('storage/' . $user->detail->profile_image)
                     : asset('images/profiles/nobody-avatar.webp') }}"
-                    alt="User profile image" class="w-[250px] h-[250px] rounded-full object-cover">
+                    alt="User profile image"
+                    class="w-[100px] h-[100px] md:w-[250px] md:h-[250px] rounded-full object-cover">
 
                 @csrf
                 @method('PUT')
 
                 {{-- ورودی فایل --}}
-                <div class="flex gap-4 justify-center items-center">
+                <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
                     <label for="avatar-input" class="text-nowrap">Upload file: </label>
                     <input
                         class="px-4 py-2 block text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
@@ -31,13 +32,13 @@
 
                 {{-- دکمه ارسال --}}
                 <button id="modal-avatar-save-button" type="submit"
-                    class="py-2 px-4 rounded-lg bg-blue-600 hover:bg-lime-500 absolute bottom-5 right-5">
+                    class="py-2 px-4 rounded-lg bg-blue-600 hover:bg-lime-500 block md:absolute bottom-5 right-5">
                     Upload
                 </button>
             </form>
 
             {{-- دکمه بستن مودال --}}
-            <button id="close-skill-modal-btn" type="button"
+            <button id="close-avatar-modal-btn" type="button"
                 class="absolute right-5 top-5 hover:text-red-400 cursor-pointer">
                 <i class="fa-solid fa-rectangle-xmark text-3xl"></i>
             </button>
@@ -48,14 +49,14 @@
     <!-- skill form as a model -->
     <div id="skill-modal"
         class="modal fixed w-full h-full z-10 flex flex-col bg-[rgba(0,0,0,0.7)] justify-center items-center hidden">
-        <div class="text-slate-100 bg-slate-800 rounded-lg relative w-[700px] h-[500px]">
-            <div class="p-4 w-3/4 h-5/6">
+        <div class="text-slate-100 bg-slate-800 rounded-lg relative w-[90%] h-[60%] md:w-[700px] md:h-[500px]">
+            <div class="p-4 w-5/6 md:w-3/4 h-5/6">
                 <ul id="modal-skill-list"
-                    class="bg-slate-600 p-2 rounded-lg grid grid-cols-4 auto-rows-min gap-2 justify-center items-start h-full gap-4 overflow-y-auto">
+                    class="bg-slate-600 p-2 rounded-lg grid grid-cols-2 md:grid-cols-4 auto-rows-min gap-2 justify-center items-start h-full gap-4 overflow-y-auto">
                 </ul>
             </div>
             <div class="p-4 w-3/4 h-1/6 flex gap-4 items-end">
-                <select id="skill-selection" class="h-fit px-4 py-2 rounded-lg bg-gray-400">
+                <select id="skill-selection" class="h-fit px-2 md:px-4 py-2 rounded-lg bg-gray-400">
                     <option value="php">PHP</option>
                     <option value="css">CSS</option>
                     <option value="html">HTML</option>
@@ -77,7 +78,7 @@
                 <i class="fa-solid fa-rectangle-xmark text-3xl"></i>
             </button>
             <button id="modal-skill-save-button" type="button"
-                class="py-2 px-4 rounded-lg bg-blue-600 hover:bg-lime-500 absolute bottom-5 right-5">Save</button>
+                class="py-2 px-4 rounded-lg bg-blue-600 hover:bg-lime-500 block mx-auto md:mx-0 md:absolute bottom-5 md:right-5 w-[90%] mt-4 md:mt-0 md:w-fit">Save</button>
         </div>
     </div>
 
@@ -110,7 +111,7 @@
                         </div>
                     </button>
                 </div>
-                <div class="grid grid-cols-3 mt-2">
+                <div class="grid grid-cols-1 md:grid-cols-3 mt-2">
                     <div class="flex flex-col fit-content gap-1">
                         <div>
                             <span class="font-bold text-xl font-[Oswald]">
@@ -187,7 +188,7 @@
                             </button>
                         </div>
                         <textarea id="description-input" type="text" name="description" disabled rows="4"
-                            class="w-full px-4 mt-4 text-justify">{{ $user->detail?->description }}</textarea>
+                            class="w-full p-0 md:px-4 mt-4 text-justify">{{ $user->detail?->description }}</textarea>
                     </form>
                 </div>
             </div>
@@ -206,7 +207,7 @@
                     </div>
                 </form>
                 @if (!empty($user->detail?->skills))
-                    <ul class="grid grid-cols-8 gap-4 text-slate-600 text-sm mt-4 px-4">
+                    <ul class="grid grid-cols-2 md:grid-cols-8 gap-2 md:gap-4 text-slate-600 text-sm mt-4 px-4">
                         @foreach ($skills as $skill)
                             <li class="p-2 rounded-lg bg-cyan-300 flex justify-center items-center">
                                 {{ $skill }}
@@ -226,7 +227,7 @@
                     <form id="main-form" method="POST" action="{{ route('user.profile.mainUpdate') }}">
                         @csrf
                         @method('PUT')
-                        <div class="grid grid-cols-2 justify-center items-center gap-1">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 justify-center items-center gap-1 sm:gap-4">
 
                             <div class="flex flex-col mt-4">
                                 @error('first_name')
@@ -239,7 +240,7 @@
                                 <div class="flex gap-2">
                                     <input id="first-name-input" type="text" name="first_name"
                                         value="{{ $user->detail?->first_name }}" placeholder="First name..."
-                                        class="border-1 border-slate-400 px-4 py-2 rounded-lg w-1/2">
+                                        class="border-1 border-slate-400 px-4 py-2 rounded-lg w-full md:w-1/2">
                                     <button id="first-name-activator-btn" type="button"
                                         class="active cursor-pointer activator-btn">
                                         <i class="fa-solid fa-pen-to-square text-gray-400 text-xl"></i>
@@ -257,7 +258,7 @@
                                 <div class="flex gap-2">
                                     <input id="last-name-input" type="text" name="last_name"
                                         value="{{ $user->detail?->last_name }}" placeholder="Last name..."
-                                        class="border-1 border-slate-400 px-4 py-2 rounded-lg w-1/2">
+                                        class="border-1 border-slate-400 px-4 py-2 rounded-lg w-full md:w-1/2">
                                     <button id="last-name-activator-btn" type="button"
                                         class="active cursor-pointer activator-btn">
                                         <i class="fa-solid fa-pen-to-square text-gray-400 text-xl"></i>
@@ -275,7 +276,7 @@
                                 <div class="flex gap-2">
                                     <input id="job-title-input" type="text" name="job_title"
                                         value="{{ $user->detail?->job_title }}" placeholder="Job title..."
-                                        class="border-1 border-slate-400 px-4 py-2 rounded-lg w-1/2">
+                                        class="border-1 border-slate-400 px-4 py-2 rounded-lg w-full md:w-1/2">
                                     <button id="job-title-activator-btn" type="button"
                                         class="active cursor-pointer activator-btn">
                                         <i class="fa-solid fa-pen-to-square text-gray-400 text-xl"></i>
@@ -290,11 +291,11 @@
                                 @enderror
 
                                 <label for="username-input">username</label>
-                                <div>
+                                <div class="flex gap-2">
                                     <!-- birth date -->
                                     <input id="username-input" type="text" name="username"
                                         value="{{ $user->detail?->username }}" placeholder="username ..."
-                                        class="border-1 border-slate-400 px-4 py-2 rounded-lg w-1/2">
+                                        class="border-1 border-slate-400 px-4 py-2 rounded-lg w-full md:w-1/2">
                                     <button id="username-activator-btn" type="button"
                                         class="active cursor-pointer activator-btn">
                                         <i class="fa-solid fa-pen-to-square text-gray-400 text-xl"></i>

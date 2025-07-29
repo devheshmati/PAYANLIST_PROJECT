@@ -292,6 +292,7 @@ function createSkillList(type, skillArray, targetListElement) {
                 "rounded-lg",
                 "font-bold",
                 "text-sm",
+                "w-fit",
             );
 
             if (type === "modal-list") {
@@ -300,8 +301,8 @@ function createSkillList(type, skillArray, targetListElement) {
                     "<i class='fa-solid fa-rectangle-xmark text-white hover:text-red-400 transition duration-200 text-lg'></i>";
                 deleteButton.classList.add(
                     "modal-skill-button",
-                    "flex",
                     "justify-center",
+                    "flex",
                     "items-center",
                 );
                 deleteButton.id = "skill-" + skill;
@@ -333,7 +334,13 @@ function handleDeleteSkillItem(e) {
 
 // avatar handler
 const avatarBtn = document.querySelector("#avatar");
+const closeAvatarModalBtn = document.querySelector("#close-avatar-modal-btn");
 avatarBtn.addEventListener("click", avatarHandler);
+
+// close avatar modal
+closeAvatarModalBtn.addEventListener("click", (e) =>
+    e.target.closest(".modal").classList.add("hidden"),
+);
 
 function avatarHandler() {
     // get avatar modal
@@ -356,15 +363,3 @@ function handleSubmitAvatarModal(e) {
         alert("Image size is to large, your image should be less then 500kb");
     }
 }
-
-// get save button from form
-// main form section end
-
-// desc form section
-// desc form section end
-
-// avatar form section
-// avatar form section end
-
-// functions, actions
-// listeners of activators

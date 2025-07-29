@@ -10,7 +10,7 @@
         <section class="my-auto">
             <div>
                 <form method="POST" action="{{ route('workspaces.store') }}"
-                    class="flex flex-col gap-4 w-[400px] bg-gradient-to-br from-slate-950 to-slate-800 p-4 rounded-lg mx-auto">
+                    class="flex flex-col gap-4 w-[90%] md:w-[400px] bg-gradient-to-br from-slate-950 to-slate-800 p-4 rounded-lg mx-auto">
                     @if (session('message'))
                         <div class="bg-lime-600 p-2 rounded-lg">
                             <p>{{ session('message') }}</p>

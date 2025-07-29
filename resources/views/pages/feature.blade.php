@@ -2,7 +2,7 @@
     <x-header />
     <x-main>
         <section class="bg-neutral-400">
-            <div class="grid grid-cols-3 relative">
+            <div class="grid grid-cols-1 md:grid-cols-3 relative">
                 <!-- left -->
                 <div class="flex flex-col max-h-[600px]">
                     <img src="{{ asset('/images/feature/task-man.webp') }}"
@@ -23,7 +23,8 @@
                 <!-- center -->
                 <div>
                     <img src="{{ asset('/images/feature/sand-timer.webp') }}"
-                        alt="sand watch with paper in graystyle image" class="w-full h-[600px]">
+                        alt="sand watch with paper in graystyle image"
+                        class="w-full h-screen sm:h-[600px] object-cover">
                 </div>
 
                 <!-- right -->
@@ -46,10 +47,10 @@
         <section class="bg-gradient-to-b from-neutral-400 to-neutral-200">
             <div class="py-20 text-center py-[8rem]">
                 <div class="max-w-2xl mx-auto px-4">
-                    <h2 class="text-4xl font-extrabold text-gray-800 mb-4 font-[Oswald] tracking-wider">
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-gray-800 mb-4 font-[Oswald] tracking-wider">
                         Discover More <span class="text-primary">Details</span>
                     </h2>
-                    <p class="text-gray-600 text-lg leading-relaxed">
+                    <p class="text-gray-600 text-sm sm:text-lg leading-relaxed">
                         PayanList isn’t just a task manager — it's a powerful tool built for productivity, focus, and
                         team alignment.
                         Dive deeper into the features that make your workflow smooth, smart, and scalable.

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
+use App\Models\UserDetail;
 
 class UserDetailController extends Controller
 {
@@ -79,10 +80,10 @@ class UserDetailController extends Controller
         );
 
         $user = $request->user();
-        $detail = $user->detail;
+        $detail = $user->detail()->firstOrCreate([]);
 
         // حذف تصویر قبلی در صورت وجود
-        if ($detail && $detail->profile_image && Storage::disk('public')->exists($detail->profile_image)) {
+        if ($detail->profile_image && Storage::disk('public')->exists($detail->profile_image)) {
             Storage::disk('public')->delete($detail->profile_image);
         }
 

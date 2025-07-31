@@ -19,22 +19,28 @@ document.addEventListener("DOMContentLoaded", () => {
                     const taskId = evt.item.dataset.id;
                     const newStatus = statusList[index];
 
-                    fetch(
-                        `/user/workspaces/${workspaceId}/tasks/${taskId}/update-status`,
-                        {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                                "X-CSRF-TOKEN": csrf,
-                            },
-                            body: JSON.stringify({
-                                status:
-                                    newStatus === "in-progress"
-                                        ? "in_progress"
-                                        : newStatus,
-                            }),
+                    // get true url, match with all type environemnt like production and local
+                    const baseUrl = document.querySelector(
+                        'meta[name="update-status-url"]',
+                    ).content;
+
+                    const url = baseUrl
+                        .replace("__WORKSPACE__", workspaceId)
+                        .replace("__TASK__", taskId);
+
+                    fetch(url, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-CSRF-TOKEN": csrf,
                         },
-                    )
+                        body: JSON.stringify({
+                            status:
+                                newStatus === "in-progress"
+                                    ? "in_progress"
+                                    : newStatus,
+                        }),
+                    })
                         .then((response) => response.json())
                         .then((data) => {
                             console.log(data.message);

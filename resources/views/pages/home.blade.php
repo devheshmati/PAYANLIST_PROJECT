@@ -35,6 +35,16 @@
 @endphp
 
 <x-layout title="Home Page">
+    <!-- mobile navbar -->
+    <div id="hamburger-menu"
+        class="translate-x-[-200%] transition duration-200 ease-in-out md:hidden overflow-hidden fixed w-full h-full z-100 bg-[rgba(0,0,0,0.7)] pt-10 m-0">
+        <x-nav-link />
+        <button id="hamburger-close-button" type="button"
+            class="absolute right-5 top-5 text-slate-300 hover:text-slate-100">
+            <i class="fa-solid fa-xmark text-2xl"></i>
+        </button>
+    </div>
+
     <x-header />
     <x-main>
         @if (session('success'))
@@ -74,7 +84,8 @@
             <div
                 class="flex flex-col gap-4 justify-center items-center bg-gradient-to-b from-black to-gray-700 py-[2rem] sm:py-[6rem] text-center">
                 <h2 class="font-[Oswald] text-3xl text-white tracking-[0.5rem]">About</h2>
-                <p class="font-[Roboto] opacity-60 font-normal text-sm md:text-md text-justify text-white w-[80%]">Lorem
+                <p class="font-[Roboto] opacity-60 font-normal text-sm md:text-md text-justify text-white w-[80%]">
+                    Lorem
                     ipsum
                     dolor sit
                     amet,
@@ -82,12 +93,16 @@
                     Pellentesque luctus
                     lorem sit amet dolor
                     auctor, eu porttitor dui scelerisque. Aliquam scelerisque urna non diam sagittis mattis. Sed
-                    condimentum nec nibh id tristique. Orci varius natoque penatibus et magnis dis parturient montes,
+                    condimentum nec nibh id tristique. Orci varius natoque penatibus et magnis dis parturient
+                    montes,
                     nascetur ridiculus mus. Curabitur ullamcorper magna non quam facilisis, porttitor interdum augue
-                    mattis. Proin euismod id nibh a sollicitudin. Duis iaculis ante sed diam aliquam tincidunt. In vitae
-                    ligula mi. Pellentesque nisi turpis, bibendum id ligula vel, facilisis tincidunt urna. Suspendisse
+                    mattis. Proin euismod id nibh a sollicitudin. Duis iaculis ante sed diam aliquam tincidunt. In
+                    vitae
+                    ligula mi. Pellentesque nisi turpis, bibendum id ligula vel, facilisis tincidunt urna.
+                    Suspendisse
                     lobortis, tortor eget laoreet volutpat, tortor dui euismod turpis, vel finibus justo justo in
-                    tortor. Cras vel augue aliquet, fringilla justo vel, laoreet ante. Duis facilisis volutpat ipsum, in
+                    tortor. Cras vel augue aliquet, fringilla justo vel, laoreet ante. Duis facilisis volutpat
+                    ipsum, in
                     pulvinar enim malesuada non. </p>
             </div>
         </section>
@@ -105,7 +120,8 @@
         <section>
             <div
                 class="flex flex-col justify-center items-center bg-gradient-to-b from-gray-700 to-slate-950 py-[4rem]">
-                <h3 class="font-[Oswald] text-2xl sm:text-3xl text-gray-400 mb-10 tracking-widest">Who support us?</h3>
+                <h3 class="font-[Oswald] text-2xl sm:text-3xl text-gray-400 mb-10 tracking-widest">Who support us?
+                </h3>
                 <ul class="px-4 flex gap-2 w-full justify-around items-center">
                     <li>
                         <img src="{{ asset('/images/slack-logo.svg') }}" alt="Slack Logo" class="h-[50px]">
@@ -134,7 +150,8 @@
                 <p class="flex gap-1 items-center opacity-80 font-[Oswald] tracking-widest text-md"><span><i
                             class="fa-regular fa-star"></i></span>EXTRA
                 </p>
-                <h3 class="font-[Roboto] text-xl md:text-3xl font-bold w-[80%]">Lorem ipsum dolor sit amet, consectetur
+                <h3 class="font-[Roboto] text-xl md:text-3xl font-bold w-[80%]">Lorem ipsum dolor sit amet,
+                    consectetur
                     adipiscing
                     elit.
                     Pellentesque
@@ -158,7 +175,8 @@
                                 </div>
                                 <div>
                                     <h4 class="font-[Roboto] font-bold tracking-widest">Title One</h4>
-                                    <p class="font-[Roboto] font-normal opacity-60 text-sm sm:text-md">Lorem ipsum dolor
+                                    <p class="font-[Roboto] font-normal opacity-60 text-sm sm:text-md">Lorem ipsum
+                                        dolor
                                         sit amet,
                                         consectetur
                                         adipiscing elit. Mauris aliquet. </p>
@@ -172,7 +190,8 @@
                                 </div>
                                 <div>
                                     <h4 class="font-[Roboto] font-bold tracking-widest">Title Two</h4>
-                                    <p class="font-[Roboto] font-normal opacity-60 text-sm sm:text-md">Lorem ipsum dolor
+                                    <p class="font-[Roboto] font-normal opacity-60 text-sm sm:text-md">Lorem ipsum
+                                        dolor
                                         sit amet,
                                         consectetur
                                         adipiscing elit. Mauris aliquet. </p>
@@ -186,7 +205,8 @@
                                 </div>
                                 <div>
                                     <h4 class="font-[Roboto] font-bold tracking-widest">Title Three</h4>
-                                    <p class="font-[Roboto] font-normal opacity-60 text-sm sm:text-md">Lorem ipsum dolor
+                                    <p class="font-[Roboto] font-normal opacity-60 text-sm sm:text-md">Lorem ipsum
+                                        dolor
                                         sit amet,
                                         consectetur
                                         adipiscing elit. Mauris aliquet. </p>
@@ -200,7 +220,8 @@
                                 </div>
                                 <div>
                                     <h4 class="font-[Roboto] font-bold tracking-widest">Title Four</h4>
-                                    <p class="font-[Roboto] font-normal opacity-60 text-sm sm:text-md">Lorem ipsum dolor
+                                    <p class="font-[Roboto] font-normal opacity-60 text-sm sm:text-md">Lorem ipsum
+                                        dolor
                                         sit amet,
                                         consectetur
                                         adipiscing elit. Mauris aliquet. </p>
@@ -214,7 +235,8 @@
                                 </div>
                                 <div>
                                     <h4 class="font-[Roboto] font-bold tracking-widest">Title Five</h4>
-                                    <p class="font-[Roboto] font-normal opacity-60 text-sm sm:text-md">Lorem ipsum dolor
+                                    <p class="font-[Roboto] font-normal opacity-60 text-sm sm:text-md">Lorem ipsum
+                                        dolor
                                         sit amet,
                                         consectetur
                                         adipiscing elit. Mauris aliquet. </p>
@@ -229,8 +251,10 @@
                                 maximus
                                 lacinia
                                 tellus, vel maximus sapien
-                                accumsan non. Donec sit amet velit a eros iaculis gravida et sed eros. Integer et enim
-                                malesuada, imperdiet lorem sit amet, maximus arcu. Nunc in arcu lobortis, aliquet lectus
+                                accumsan non. Donec sit amet velit a eros iaculis gravida et sed eros. Integer et
+                                enim
+                                malesuada, imperdiet lorem sit amet, maximus arcu. Nunc in arcu lobortis, aliquet
+                                lectus
                                 in</p>
                         </div>
                     </div>
@@ -283,14 +307,17 @@
                         </ul>
                         <div class="mt-5 px-5">
                             <h3 class="font-[Oswald] font-bold text-lg tracking-wide mb-2">Header Specials</h3>
-                            <p class="font-[Roboto] text-sm sm:text-md font-normal opacity-60">Suspendisse convallis
+                            <p class="font-[Roboto] text-sm sm:text-md font-normal opacity-60">Suspendisse
+                                convallis
                                 tempus
                                 feugiat. Ut
                                 maximus
                                 lacinia
                                 tellus, vel maximus sapien
-                                accumsan non. Donec sit amet velit a eros iaculis gravida et sed eros. Integer et enim
-                                malesuada, imperdiet lorem sit amet, maximus arcu. Nunc in arcu lobortis, aliquet lectus
+                                accumsan non. Donec sit amet velit a eros iaculis gravida et sed eros. Integer et
+                                enim
+                                malesuada, imperdiet lorem sit amet, maximus arcu. Nunc in arcu lobortis, aliquet
+                                lectus
                                 in</p>
                         </div>
                     </div>
@@ -333,9 +360,11 @@
                             </div>
                         </ul>
                         <div class="flex flex-col gap-2 mt-2">
-                            <h4 class="text-lg sm:text-xl font-bold font-[Oswald]">Integrate With Your Favorite Tools
+                            <h4 class="text-lg sm:text-xl font-bold font-[Oswald]">Integrate With Your Favorite
+                                Tools
                             </h4>
-                            <p class="font-[Roboto] font-normal opacity-60 text-sm sm:text-md">Lorem ipsum dolor sit
+                            <p class="font-[Roboto] font-normal opacity-60 text-sm sm:text-md">Lorem ipsum dolor
+                                sit
                                 amet, consectetur
                                 adipiscing elit. Donec dictum porttitor nibh, sit amet venenatis ex dapibus et.
                                 Vestibulum laoreet tellus quis velit condimentum congue.</p>
@@ -380,7 +409,8 @@
                             </div>
                         </div>
                         <div class="flex flex-col gap-2 mt-6">
-                            <h4 class="text-lg sm:text-xl font-bold font-[Oswald]">Integrate With Your Favorite Tools
+                            <h4 class="text-lg sm:text-xl font-bold font-[Oswald]">Integrate With Your Favorite
+                                Tools
                             </h4>
                             <p class="font-normal opacity-60 text-sm sm:text-md">Lorem ipsum dolor sit amet,
                                 consectetur
@@ -504,7 +534,7 @@
                         class="flex flex-col gap-4 rounded-lg col-span-12 md:col-span-6 bg-gradient-to-b from-slate-800 to-slate-950 gap-2 p-4 shadow-[-1px_-1px_5px_0px] shadow-slate-400">
                         <h4 class="text-xl">Overview Dashboard</h4>
                         <div
-                            class="flex p-4 bg-gradient-to-tr from-slate-950 to-slate-800 shadow-[-1px_1px_3px_0px] shadow-slate-400 rounded-lg items-center justify-between">
+                            class="grid grid-cols-2 p-4 bg-gradient-to-tr from-slate-950 to-slate-800 shadow-[-1px_1px_3px_0px] shadow-slate-400 rounded-lg items-center justify-between">
                             <div class="flex flex-col gap-2">
                                 <div>
                                     <p class="text-sm">Total Tasks Complete</p>
@@ -525,7 +555,7 @@
                                 </div>
                             </div>
                             <div>
-                                <canvas class="w-[150px] sm:w-[250px]" id="chart-01"></canvas>
+                                <canvas class="sm:w-[250px]" id="chart-01"></canvas>
                             </div>
                         </div>
                         <div>
@@ -544,14 +574,14 @@
                                     <p class="text-xs opacity-60">In Process</p>
                                     <p class="text-xl">900</p>
                                 </div>
-                                <canvas class="w-full" id="chart-02"></canvas>
+                                <canvas class="w-auto" id="chart-02"></canvas>
                             </div>
                             <div class='col-span-6 relative pt-[4rem]'>
                                 <div class="absolute top-[5%] left-[5%] w-fit h-fit index-10">
                                     <p class="text-xs opacity-60">Pending Approval</p>
                                     <p class="text-xl">350</p>
                                 </div>
-                                <canvas class="w-full" id="chart-03"></canvas>
+                                <canvas class="w-auto" id="chart-03"></canvas>
                             </div>
                         </div>
                     </div>
@@ -568,7 +598,8 @@
                                     placerat
                                     maximus nunc.
                                     In id elit et
-                                    neque efficitur fringilla. Nam maximus tristique eleifend. Morbi elementum malesuada
+                                    neque efficitur fringilla. Nam maximus tristique eleifend. Morbi elementum
+                                    malesuada
                                     ipsum sit amet tempor. Duis a nisl luctus, pellentesque quam in, pulvinar neque.
                                     Proin tristique sapien non purus tincidunt</p>
                             </div>
@@ -581,10 +612,12 @@
                             </div>
                             <div class="flex flex-col gap-2">
                                 <h4 class="text-xl sm:text-2xl font-[Oswald]">Customizable Solutions</h4>
-                                <p class="text-sm opacity-60">Etiam ante mi, fermentum sed metus vulputate, placerat
+                                <p class="text-sm opacity-60">Etiam ante mi, fermentum sed metus vulputate,
+                                    placerat
                                     maximus nunc.
                                     In id elit et
-                                    neque efficitur fringilla. Nam maximus tristique eleifend. Morbi elementum malesuada
+                                    neque efficitur fringilla. Nam maximus tristique eleifend. Morbi elementum
+                                    malesuada
                                     ipsum sit amet tempor. Duis a nisl luctus, pellentesque quam in, pulvinar neque.
                                     Proin tristique sapien non purus tincidunt</p>
                             </div>
@@ -597,10 +630,12 @@
                             </div>
                             <div class="flex flex-col gap-2">
                                 <h4 class="text-xl sm:text-2xl font-[Oswald]">Data Driven Decisions</h4>
-                                <p class="text-sm opacity-60">Etiam ante mi, fermentum sed metus vulputate, placerat
+                                <p class="text-sm opacity-60">Etiam ante mi, fermentum sed metus vulputate,
+                                    placerat
                                     maximus nunc.
                                     In id elit et
-                                    neque efficitur fringilla. Nam maximus tristique eleifend. Morbi elementum malesuada
+                                    neque efficitur fringilla. Nam maximus tristique eleifend. Morbi elementum
+                                    malesuada
                                     ipsum sit amet tempor. Duis a nisl luctus, pellentesque quam in, pulvinar neque.
                                     Proin tristique sapien non purus tincidunt</p>
                             </div>
@@ -670,7 +705,8 @@
                             </li>
                             <li class="flex items-center gap-2">
                                 <i class="fa-solid fa-check text-green-400 text-xs"></i>
-                                <p class="text-sm opacity-60">Enhanced reporting and analytics for better insights</p>
+                                <p class="text-sm opacity-60">Enhanced reporting and analytics for better insights
+                                </p>
                             </li>
                             <li class="flex items-center gap-2">
                                 <i class="fa-solid fa-check text-green-400 text-xs"></i>
@@ -694,7 +730,8 @@
                         <ul class="flex flex-col gap-2">
                             <li class="flex items-center gap-2">
                                 <i class="fa-solid fa-check text-green-400 text-xs"></i>
-                                <p class="text-sm opacity-60">Full AI-driven workflow automotion for complex tasks</p>
+                                <p class="text-sm opacity-60">Full AI-driven workflow automotion for complex tasks
+                                </p>
                             </li>
                             <li class="flex items-center gap-2">
                                 <i class="fa-solid fa-check text-green-400 text-xs"></i>
@@ -706,7 +743,8 @@
                             </li>
                             <li class="flex items-center gap-2">
                                 <i class="fa-solid fa-check text-green-400 text-xs"></i>
-                                <p class="text-sm opacity-60">Dedicated account manager for personalized support</p>
+                                <p class="text-sm opacity-60">Dedicated account manager for personalized support
+                                </p>
                             </li>
                         </ul>
                         <a href="#"
@@ -730,6 +768,6 @@
         </section>
 
         <script type='module' src="/js/charts.js" defer></script>
-        <x-footer />
     </x-main>
+    <x-footer />
 </x-layout>

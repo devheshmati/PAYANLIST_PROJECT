@@ -1,3 +1,6 @@
+// import chart js
+import Chart from "chart.js/auto";
+
 // Chart 01
 const ctx = document.getElementById("chart-01").getContext("2d");
 

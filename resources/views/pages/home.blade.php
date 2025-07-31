@@ -495,22 +495,22 @@
         {{-- Section 07 --}}
         <section class="text-white font-[Roboto] bg-slate-950">
             <div
-                class="grid grid-cols-2 lg:grid-cols-4 justify-around gap-4 p-[4rem] bg-purple-700 w-[80%] mx-auto rounded-xl my-[3rem]">
+                class="grid grid-cols-2 lg:grid-cols-4 justify-around gap-4 p-4 md:p-[4rem] bg-purple-700 w-[80%] mx-auto rounded-xl my-[3rem]">
                 <div class="flex flex-col gap-2 justify-center items-center">
-                    <p class="text-4xl md:text-5xl text-bold">9,230</p>
-                    <p class="text-sm lg:text-md xl:text-lg opacity-70">Task Complete</p>
+                    <p class="text-2xl md:text-5xl text-bold">9,230</p>
+                    <p class="text-xs sm:text-sm lg:text-md xl:text-lg opacity-70">Task Complete</p>
                 </div>
                 <div class="flex flex-col gap-2 justify-center items-center">
-                    <p class="text-4xl md:text-5xl text-bold">5,300</p>
-                    <p class="text-sm lg:text-md xl:text-lg opacity-70">Task Member Join</p>
+                    <p class="text-2xl md:text-5xl text-bold">5,300</p>
+                    <p class="text-xs sm:text-sm lg:text-md xl:text-lg opacity-70">Task Member Join</p>
                 </div>
                 <div class="flex flex-col gap-2 justify-center items-center">
-                    <p class="text-4xl md:text-5xl text-bold">4,450</p>
-                    <p class="text-sm lg:text-md xl:text-lg opacity-70">Project Completed</p>
+                    <p class="text-2xl md:text-5xl text-bold">4,450</p>
+                    <p class="text-xs sm:text-sm lg:text-md xl:text-lg opacity-70">Project Completed</p>
                 </div>
                 <div class="flex flex-col gap-2 justify-center items-center">
-                    <p class="text-4xl md:text-5xl text-bold">8,910</p>
-                    <p class="text-sm lg:text-md xl:text-lg opacity-70">Componies Using App</p>
+                    <p class="text-2xl md:text-5xl text-bold">8,910</p>
+                    <p class="text-xs sm:text-sm lg:text-md xl:text-lg opacity-70">Componies Using App</p>
                 </div>
             </div>
         </section>

@@ -16,7 +16,7 @@
 
                 @if ($recentWorkspaces->isNotEmpty())
                     <ul
-                        class="gird grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 mx-auto w-[90%] justify-between items-center">
+                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 mx-auto w-[90%] justify-between items-center">
                         @foreach ($recentWorkspaces as $item)
                             @if ($item->pivot->last_opened_at)
                                 <li>

@@ -1,9 +1,7 @@
-// import chart js
-import Chart from "chart.js/auto";
-
 // Chart 01
 const ctx = document.getElementById("chart-01").getContext("2d");
 
+// chart 01
 const chart_01_data = {
     labels: ["1", "2", "3", "4", "5", "6", "7"],
     datasets: [

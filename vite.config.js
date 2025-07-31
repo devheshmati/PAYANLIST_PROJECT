@@ -10,7 +10,6 @@ export default defineConfig({
                 "resources/js/app.js",
                 "resources/js/accordion.js",
                 "resources/js/hamburger-menu.js",
-                "resources/js/charts.js",
             ],
             refresh: true,
         }),

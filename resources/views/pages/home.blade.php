@@ -769,3 +769,5 @@
     </x-main>
     <x-footer />
 </x-layout>
+
+<script type="module" src="js/charts.js" defer></script>

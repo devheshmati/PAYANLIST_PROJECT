@@ -766,8 +766,6 @@
                 <x-accordion message='hello' :accList="$accList" />
             </div>
         </section>
-
-        <script type='module' src="/js/charts.js" defer></script>
     </x-main>
     <x-footer />
 </x-layout>

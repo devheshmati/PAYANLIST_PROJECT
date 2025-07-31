@@ -1,4 +1,4 @@
-<main {{ $attributes->merge(['class' => 'flex flex-col min-h-screen']) }}>
+<main {{ $attributes->merge(['class' => 'main flex flex-col min-h-screen']) }}>
     <section>
         <div>
             <span

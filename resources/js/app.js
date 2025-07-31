@@ -5,5 +5,3 @@ window.Sortable = Sortable;
 window.Chart = Chart;
 
 import "./bootstrap";
-import "./accordion";
-import "./hamburger-menu";

@@ -314,15 +314,15 @@
         </section>
     </x-main>
 
-    <script>
-        window.skillListFromServer = @json($skills);
-    </script>
-
-    @vite('./resources/js/profile-page-handler.js');
-
     <style>
         button.active i {
             color: white;
         }
     </style>
 </x-layout>
+
+<script>
+    window.skillListFromServer = @json($skills);
+</script>
+
+<script type="module" src="/js/profile-page-handler.js" defer></script>

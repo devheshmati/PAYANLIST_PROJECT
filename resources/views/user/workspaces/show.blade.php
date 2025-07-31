@@ -439,5 +439,6 @@
     </x-main>
 
     {{-- Add drag and drop and task status changer --}}
-    @vite('./resources/js/tasksStatusChangerScript.js');
 </x-layout>
+
+<script type="module" src="/js/tasks-status-handler.js" defer></script>

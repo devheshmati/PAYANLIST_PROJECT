@@ -67,8 +67,7 @@
                 </form>
             </li>
         </ul>
-
     </div>
-
-    @vite('resources/js/user-sidebar.js')
 </aside>
+
+<script type="module" src="/js/user-sidebar.js" defer></script>

@@ -26,3 +26,5 @@
         @endforeach
     </ul>
 </div>
+
+<script type="module" src="/js/accordion.js" defer></script>

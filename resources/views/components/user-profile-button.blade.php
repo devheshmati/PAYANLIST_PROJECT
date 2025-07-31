@@ -23,9 +23,8 @@
                     <button type="submit">Logout</button>
                 </form>
             </li>
-
         </ul>
     </div>
-
-    @vite('resources/js/user-profile-button.js')
 </div>
+
+<script type="module" src="/js/user-profile-button.js" defer></script>

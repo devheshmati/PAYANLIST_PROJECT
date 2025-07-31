@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     // get csrf token
-    const csrf = document.querySelector("#csrf-token").value;
+    const csrf = document.querySelector('meta[name="csrf-token"]').content;
 
     if (allLists) {
         allLists.forEach((list, index) => {

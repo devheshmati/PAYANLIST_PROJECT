@@ -10,7 +10,7 @@
         @if (session()->has('redirect-after-register-message'))
             <script>
                 setTimeout(function() {
-                    window.location.href = "http://localhost:8000/auth/login";
+                    window.location.href = "{{ url('/auth/login') }}";
                 }, 5000); // 2 second
             </script>
         @endif

@@ -219,7 +219,8 @@ window.addEventListener("DOMContentLoaded", function () {
         const csrfToken = document
             .querySelector('meta[name="csrf-token"]')
             .getAttribute("content");
-        const url = "/user/profile/skills";
+        const baseUrl = document.querySelector('meta[name="base-url"]').content;
+        const url = baseUrl + "/user/profile/skills";
 
         fetch(url, {
             method: "PUT",
@@ -231,7 +232,12 @@ window.addEventListener("DOMContentLoaded", function () {
             body: JSON.stringify({ skills: skillList }),
         })
             .then((response) => {
-                if (!response.ok) throw new Error("خطا در ذخیره مهارت‌ها");
+                if (response.status === 403) {
+                    console.error('CSRF token mismatch or permission denied');
+                    location.reload(); // Refresh to get new CSRF token
+                    return;
+                }
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 return response.json();
             })
             .then((data) => {

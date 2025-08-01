@@ -20,11 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     const newStatus = statusList[index];
 
                     // get true url, match with all type environemnt like production and local
-                    const baseUrl = document.querySelector(
-                        'meta[name="update-status-url"]',
-                    ).content;
+                    // Replace line 22-29 with:
+                    const baseUrl = document.querySelector('meta[name="base-url"]').content;
+                    const updateUrl = document.querySelector('meta[name="update-status-url"]').content;
 
-                    const url = baseUrl
+                    const url = baseUrl + updateUrl
                         .replace("__WORKSPACE__", workspaceId)
                         .replace("__TASK__", taskId);
 
@@ -41,7 +41,15 @@ document.addEventListener("DOMContentLoaded", () => {
                                     : newStatus,
                         }),
                     })
-                        .then((response) => response.json())
+                        .then((response) => {
+                            if (response.status === 403) {
+                                console.error('CSRF token mismatch or permission denied');
+                                location.reload(); // Refresh to get new CSRF token
+                                return;
+                            }
+                            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                            return response.json();
+                        })
                         .then((data) => {
                             console.log(data.message);
                         })

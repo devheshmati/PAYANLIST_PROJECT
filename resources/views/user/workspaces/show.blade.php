@@ -20,212 +20,41 @@
                 @if (session('success'))
                     <span class="bg-lime-600 py-2 px-2 ps-8 rounded-tr-lg">{{ session('success') }}</span>
                 @endif
-                <div class="flex p-4 justify-around">
-                    <div class='flex flex-col w-100 h-100 bg-[rgba(100,100,150,0.2)] p-2'>
+                <div class="grid grid-cols-1 sm:grid-cols-3 p-4 justify-around">
+                    <div class='flex flex-col h-100 bg-[rgba(100,100,150,0.2)] p-2'>
                         <h3 class="opacity-60 font-[Oswald] text-lg">Todo List</h3>
                         <ul id="todo-tasks-list"
                             class="todo-tasks-list flex flex-col gap-4 overflow-y-scroll mt-4 min-h-3/4">
                             @if ($tasks)
                                 @foreach ($tasks as $item)
                                     @if ($item->status === 'todo')
-                                        <li class="task-item flex justify-between gap-4 bg-[rgba(160,160,180,0.5)] w-[90%] mx-auto"
-                                            data-id="{{ $item->id }}">
-                                            <span class="flex justify-between items-center w-100 px-2 py-4 gap-4">
-                                                <span class="flex justify-between items-center gap-2">
-                                                    <span class="text-xs font-bold">
-                                                        @if ($item->priority === 'low')
-                                                            <span
-                                                                class="text-lime-300 flex h-[20px] w-[20px] justify-center items-center bg-lime-600">L</span>
-                                                        @endif
-                                                        @if ($item->priority === 'medium')
-                                                            <span
-                                                                class="text-yellow-300 flex h-[20px] w-[20px] justify-center items-center bg-yellow-600">M</span>
-                                                        @endif
-                                                        @if ($item->priority === 'high')
-                                                            <span
-                                                                class="text-red-300 flex h-[20px] w-[20px] justify-center items-center bg-red-500">H</span>
-                                                        @endif
-                                                    </span>
-                                                    <span class="">
-                                                        @if ($item->score === 1)
-                                                            <span class="text-lime-400">{{ $item->score }}</span>
-                                                        @endif
-                                                        @if ($item->score === 2)
-                                                            <span class="text-yellow-400">{{ $item->score }}</span>
-                                                        @endif
-                                                        @if ($item->score === 3)
-                                                            <span class="text-red-400">{{ $item->score }}</span>
-                                                        @endif
-                                                    </span>
-                                                </span>
-                                                <span class="flex-4 text-lg">
-                                                    {{ $item->title }}
-                                                </span>
-                                                <span class="flex justify-between gap-4 flex-1 text-lg">
-                                                    <span>
-                                                        <a href="{{ route('workspaces.tasks.edit', ['workspace' => $workspace, 'task' => $item]) }}"
-                                                            type="button">
-                                                            <i
-                                                                class="fa-solid fa-pen-to-square cursor-pointer text-slate-300 hover:text-slate-100"></i>
-                                                        </a>
-                                                    </span>
-                                                    <span>
-                                                        <form
-                                                            action="{{ route('workspaces.tasks.destroy', ['workspace' => $workspace, 'task' => $item]) }}"
-                                                            method="POST">
-
-                                                            @csrf
-                                                            @method('DELETE')
-
-                                                            <button type="submit"
-                                                                class="cursor-pointer text-slate-300 hover:text-slate-100">
-                                                                <i class="fa-solid fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </li>
+                                        <x-task-item :workspace="$workspace" :item="$item" />
                                     @endif
                                 @endforeach
                             @endif
                         </ul>
                     </div>
-                    <div class='flex flex-col w-100 h-100 bg-[rgba(252,128,3,0.2)] p-2'>
+                    <div class='flex flex-col h-100 bg-[rgba(252,128,3,0.2)] p-2'>
                         <h3 class="opacity-60 font-[Oswald] text-lg">In Progress</h3>
                         <ul id="in-progress-tasks-list"
                             class="in-porgress-tasks-list flex flex-col gap-4 overflow-y-scroll mt-4 min-h-3/4">
                             @if ($tasks)
                                 @foreach ($tasks as $item)
                                     @if ($item->status === 'in_progress')
-                                        <li class="task-item flex justify-between gap-4 bg-[rgba(160,160,180,0.5)] w-[90%] mx-auto"
-                                            data-id="{{ $item->id }}">
-                                            <span class="flex justify-between items-center w-100 px-2 py-4 gap-4">
-                                                <span class="flex justify-between items-center gap-2">
-                                                    <span class="text-xs font-bold">
-                                                        @if ($item->priority === 'low')
-                                                            <span
-                                                                class="text-lime-300 flex h-[20px] w-[20px] justify-center items-center bg-lime-600">L</span>
-                                                        @endif
-                                                        @if ($item->priority === 'medium')
-                                                            <span
-                                                                class="text-yellow-300 flex h-[20px] w-[20px] justify-center items-center bg-yellow-600">M</span>
-                                                        @endif
-                                                        @if ($item->priority === 'high')
-                                                            <span
-                                                                class="text-red-300 flex h-[20px] w-[20px] justify-center items-center bg-red-500">H</span>
-                                                        @endif
-                                                    </span>
-                                                    <span class="">
-                                                        @if ($item->score === 1)
-                                                            <span class="text-lime-400">{{ $item->score }}</span>
-                                                        @endif
-                                                        @if ($item->score === 2)
-                                                            <span class="text-yellow-400">{{ $item->score }}</span>
-                                                        @endif
-                                                        @if ($item->score === 3)
-                                                            <span class="text-red-400">{{ $item->score }}</span>
-                                                        @endif
-                                                    </span>
-                                                </span>
-                                                <span class="flex-4 text-lg">
-                                                    {{ $item->title }}
-                                                </span>
-                                                <span class="flex justify-between gap-4 flex-1 text-lg">
-                                                    <span>
-                                                        <a href="{{ route('workspaces.tasks.edit', ['workspace' => $workspace, 'task' => $item]) }}"
-                                                            type="button">
-                                                            <i
-                                                                class="fa-solid fa-pen-to-square cursor-pointer text-slate-300 hover:text-slate-100"></i>
-                                                        </a>
-                                                    </span>
-                                                    <span>
-                                                        <form
-                                                            action="{{ route('workspaces.tasks.destroy', ['workspace' => $workspace, 'task' => $item]) }}"
-                                                            method="POST">
-
-                                                            @csrf
-                                                            @method('DELETE')
-
-                                                            <button type="submit"
-                                                                class="cursor-pointer text-slate-300 hover:text-slate-100">
-                                                                <i class="fa-solid fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </li>
+                                        <x-task-item :workspace="$workspace" :item="$item" />
                                     @endif
                                 @endforeach
                             @endif
                         </ul>
                     </div>
-                    <div class='flex flex-col w-100 h-100 bg-[rgba(90,252,3,0.2)] p-2'>
+                    <div class='flex flex-col h-100 bg-[rgba(90,252,3,0.2)] p-2'>
                         <h3 class="opacity-60 font-[Oswald] text-lg">Done</h3>
                         <ul id="done-tasks-list"
                             class="done-tasks-list flex flex-col gap-4 overflow-y-scroll mt-4 min-h-3/4">
                             @if ($tasks)
                                 @foreach ($tasks as $item)
                                     @if ($item->status === 'done')
-                                        <li class="task-item flex justify-between gap-4 bg-[rgba(160,160,180,0.5)] w-[90%] mx-auto"
-                                            data-id="{{ $item->id }}">
-                                            <span class="flex justify-between items-center w-100 px-2 py-4 gap-4">
-                                                <span class="flex justify-between items-center gap-2">
-                                                    <span class="text-xs font-bold">
-                                                        @if ($item->priority === 'low')
-                                                            <span
-                                                                class="text-lime-300 flex h-[20px] w-[20px] justify-center items-center bg-lime-600">L</span>
-                                                        @endif
-                                                        @if ($item->priority === 'medium')
-                                                            <span
-                                                                class="text-yellow-300 flex h-[20px] w-[20px] justify-center items-center bg-yellow-600">M</span>
-                                                        @endif
-                                                        @if ($item->priority === 'high')
-                                                            <span
-                                                                class="text-red-300 flex h-[20px] w-[20px] justify-center items-center bg-red-500">H</span>
-                                                        @endif
-                                                    </span>
-                                                    <span class="">
-                                                        @if ($item->score === 1)
-                                                            <span class="text-lime-400">{{ $item->score }}</span>
-                                                        @endif
-                                                        @if ($item->score === 2)
-                                                            <span class="text-yellow-400">{{ $item->score }}</span>
-                                                        @endif
-                                                        @if ($item->score === 3)
-                                                            <span class="text-red-400">{{ $item->score }}</span>
-                                                        @endif
-                                                    </span>
-                                                </span>
-                                                <span class="flex-4 text-lg">
-                                                    {{ $item->title }}
-                                                </span>
-                                                <span class="flex justify-between gap-4 flex-1 text-lg">
-                                                    <span>
-                                                        <a href="{{ route('workspaces.tasks.edit', ['workspace' => $workspace, 'task' => $item]) }}"
-                                                            type="button">
-                                                            <i
-                                                                class="fa-solid fa-pen-to-square cursor-pointer text-slate-300 hover:text-slate-100"></i>
-                                                        </a>
-                                                    </span>
-                                                    <span>
-                                                        <form
-                                                            action="{{ route('workspaces.tasks.destroy', ['workspace' => $workspace, 'task' => $item]) }}"
-                                                            method="POST">
-
-                                                            @csrf
-                                                            @method('DELETE')
-
-                                                            <button type="submit"
-                                                                class="cursor-pointer text-slate-300 hover:text-slate-100">
-                                                                <i class="fa-solid fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </li>
+                                        <x-task-item :workspace="$workspace" :item="$item" />
                                     @endif
                                 @endforeach
                             @endif
@@ -237,7 +66,7 @@
             <section class="bg-gradient-to-b from-slate-900 to-slate-600">
                 <div class="flex flex-col">
                     {{-- creating tasks, creating team, inviting users forms section --}}
-                    <div class="flex justify-center">
+                    <div class="grid grid-cols-1 md:grid-cols-3 justify-center">
                         {{-- create task form --}}
                         <div class="p-4">
                             <h3 class="font-[Oswald] text-2xl font-bold">New Task</h3>
@@ -311,8 +140,7 @@
                                             <p class="text-red-400">{{ $message }}</p>
                                         </div>
                                     @enderror
-                                    <input id="team-name" type="text" name="name"
-                                        placeholder="Enter Team name"
+                                    <input id="team-name" type="text" name="name" placeholder="Enter Team name"
                                         class="border-1 border-slate-400 py-2 px-4 rounded-lg">
                                 </div>
 

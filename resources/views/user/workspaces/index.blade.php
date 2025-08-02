@@ -19,7 +19,7 @@
                         </div>
                     @else
                         <ul
-                            class="workspace-list grid grid-cols-4 gap-6 mt-8 overflow-y-scroll h-auto justify-between items-center p-4">
+                            class="workspace-list grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 overflow-y-scroll h-auto justify-between items-center p-4">
                             @foreach ($workspaces as $item)
                                 <li>
                                     <a href="{{ route('workspaces.show', $item->id) }}"
@@ -40,7 +40,8 @@
                                                 <span>Team</span>
                                                 <span>{{ $item->teams->count() }}</span>
                                             </div>
-                                            <div class="flex gap-4 justify-between text-xs">
+                                            <div
+                                                class="grid grid-cols-1 xl:grid-cols-3 gap-2 sm:gap-4 justify-between text-xs">
                                                 <span
                                                     class="bg-lime-600 text-lime-400 p-2 rounded-lg flex justify-center items-center text-nowrap">Todo:
                                                     {{ $item->tasks->where('status', 'todo')->count() }}</span>
